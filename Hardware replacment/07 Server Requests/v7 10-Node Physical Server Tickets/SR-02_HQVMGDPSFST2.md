@@ -9,7 +9,7 @@
 | System Environment | TEST |
 | Data Center | HQ |
 | OS | Windows Server 2025 |
-| Native / Local Storage Requirement | Minimum 300 GB usable native/local server storage, implemented as hardware RAID 1 (mirrored). Windows Server and locally installed GDPS applications/services reside on native server storage. Shared clustered data remains on separately provisioned SAN storage. |
+| Native / Local Storage Requirement | C:\\ = 150 GB. D:\\ = 330 GB. Both are native/local server storage. Shared clustered data remains on separately provisioned SAN storage. |
 | Memory | 128 GB minimum |
 | Server Network | Server Distribution |
 | Purpose | GDPS TEST physical file/service cluster node 2. TEST follows the Alpha two-node cluster pattern used in production so production-equivalent clustering, storage, failover, and recovery can be validated before release. Requested hostname: HQVMGDPSFST2. |
@@ -25,7 +25,7 @@
 
 Provision this request as a **physical server** with hostname **HQVMGDPSFST2**. The `VM` characters are part of the established GPO hostname convention for this GDPS server and do not indicate that the platform is virtual. Do not rename without an approved architecture change.
 
-This server is one member of a two-node Windows Server Failover Cluster and follows the Alpha two-node cluster pattern used in production. Provide minimum 128 GB RAM, minimum 300 GB usable native/local storage using hardware RAID 1 (mirrored), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to independent storage paths/fabrics, Windows MPIO support, and shared HPE enterprise storage.
+This server is one member of a two-node Windows Server Failover Cluster and follows the Alpha two-node cluster pattern used in production. Provide minimum 128 GB RAM, native/local Windows storage with C:\\ = 150 GB and D:\\ = 330 GB, redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to independent storage paths/fabrics, Windows MPIO support, and shared HPE enterprise storage.
 
 TEST shared SAN storage baseline: **14.4 TB usable minimum**, with final LUN presentation per the controlled GDPS storage design/storage request.
 
@@ -41,4 +41,9 @@ TEST is the only new physical cluster and does not replace an existing Alpha TES
 
 ## Native Storage Baseline
 
-Minimum **300 GB usable native/local storage per physical server, hardware RAID 1 (mirrored)**. Windows Server and locally installed GDPS applications/services use native server storage; shared clustered data remains on separately provisioned SAN storage.
+Provision the native/local Windows disk layout as:
+
+- **C:\\ = 150 GB** — Windows Server system/OS volume.
+- **D:\\ = 330 GB** — native/local GDPS application and server-local working volume.
+
+Shared clustered data remains on separately provisioned SAN storage.
