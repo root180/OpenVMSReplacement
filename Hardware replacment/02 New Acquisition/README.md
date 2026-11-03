@@ -5,6 +5,7 @@ Current controlled acquisition artifacts:
 - GDPS Hardware Master v4.3
 - GDPS Hardware Acquisition SOW - CDW-G v1.9
 - GDPS CDW-G Costing and Acquisition List v11
+- GDPS Memory (RAM) Requirement Justification v1.0
 - HPE/CDW-G engineered quote and final BOM when received
 
 Physical acquisition baseline:
