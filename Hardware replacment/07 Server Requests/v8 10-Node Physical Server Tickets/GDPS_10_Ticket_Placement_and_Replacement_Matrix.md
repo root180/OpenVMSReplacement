@@ -29,7 +29,7 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 | ALPHA13 | COOP, DCIAC03 | HPE Integrity i6, 2 nodes | HPE Primera, 21.4 TB | DCIAC03 | SR-09, SR-10 (physical) |
 | ALPHA0 | Development | HPE Integrity i2, 2 nodes (alpha1, alpha2) | HPE 3PAR, 14.4 TB | IMDC | GDPS DEV virtual-server design (not in this request set) |
 
-ALPHA3 replicates to ALPHA6, ALPHA10, ALPHA13, and ALPHA0.
+Controlled recovery replication is PROD -> DR, PROD -> COOP DCIAC02, and PROD -> COOP DCIAC03. DEV/ALPHA0 is not treated as a production recovery target in this acquisition baseline.
 
 Physical count: 5 clusters × 2 nodes = 10 existing Integrity nodes. ALPHA0 moves to virtual servers, so 8 existing nodes are replaced physically, plus 2 new TEST nodes = **10 physical GDPS server requests**.
 
@@ -91,7 +91,7 @@ ALPHA3 is the sizing standard for all replacement environments.
 | SR-03, SR-04 | PROD | 14.4 TB usable minimum (ALPHA3 3PAR) | ST-02 |
 | SR-05, SR-06 | DR | 14.4 TB usable minimum (ALPHA6 3PAR) | ST-03 |
 | SR-07, SR-08 | COOP DCIAC02 | 14.4 TB usable minimum (ALPHA10 3PAR) | ST-04 |
-| SR-09, SR-10 | COOP DCIAC03 | 21.4 TB usable minimum (ALPHA13 Primera) | ST-04 |
+| SR-09, SR-10 | COOP DCIAC03 | 21.4 TB usable minimum (ALPHA13 Primera) | ST-05 |
 
 ## Network traceability note
 
