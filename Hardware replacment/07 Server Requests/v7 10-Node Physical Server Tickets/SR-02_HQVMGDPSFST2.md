@@ -14,6 +14,7 @@
 | Server Network | Server Distribution |
 | Purpose | GDPS TEST physical file/service cluster node 2. TEST is the only new physical cluster. Requested hostname: HQVMGDPSFST2. |
 | Existing Server Being Replaced | N/A - new GDPS TEST environment; no existing Alpha node is being replaced. |
+| Existing Alpha DNS / IP Traceability | N/A |
 | RDP Access | Matthew Taylor |
 | Patching Group | SCCM_Server_Patching_General_D — Server Reboots 4th Friday 11 am–2 pm, subject to cluster-safe sequential reboot coordination |
 | Affinity Rule | N/A / None — physical server |
@@ -33,6 +34,10 @@ Use an independent File Share Witness for WSFC quorum. The witness contains quor
 Peer nodes in the same cluster must not be rebooted simultaneously. Patching and maintenance must preserve cluster availability.
 
 Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and other infrastructure values are assigned by the appropriate GPO infrastructure teams.
+
+## Network Traceability Control
+
+The Alpha IP addresses above are **source-system traceability only**. They do not assign or reserve addresses for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
 
 ## Replacement Control
 
