@@ -9,46 +9,36 @@
 | System Environment | TEST |
 | Data Center | HQ |
 | OS | Windows Server 2025 |
-| Native / Local Storage Requirement | Minimum 300 GB usable native/local server storage. Windows Server and locally installed GDPS applications/services reside on native server storage. Shared clustered data remains on separately provisioned SAN storage. |
+| Native / Local Storage Requirement | Minimum 300 GB usable native/local server storage, implemented as hardware RAID 1 (mirrored). Windows Server and locally installed GDPS applications/services reside on native server storage. Shared clustered data remains on separately provisioned SAN storage. |
 | Memory | 128 GB minimum |
 | Server Network | Server Distribution |
-| Purpose | GDPS TEST physical file/service cluster node 2. TEST is the only new physical cluster. Requested hostname: HQVMGDPSFST2. |
+| Purpose | GDPS TEST physical file/service cluster node 2. TEST follows the Alpha two-node cluster pattern used in production so production-equivalent clustering, storage, failover, and recovery can be validated before release. Requested hostname: HQVMGDPSFST2. |
 | Existing Server Being Replaced | N/A - new GDPS TEST environment; no existing Alpha node is being replaced. |
-| Existing Alpha DNS / IP Traceability | N/A |
+| Existing Alpha DNS / IP Traceability | N/A - TEST is new and has no existing Alpha node/IP replacement. |
 | RDP Access | Matthew Taylor |
-| Patching Group | SCCM_Server_Patching_General_D — Server Reboots 4th Friday 11 am–2 pm, subject to cluster-safe sequential reboot coordination |
+| Patching Group | Node 2 must be assigned to a different approved SCCM patch group/window from SR-01. SR-01 is SCCM_Server_Patching_General_D — Server Reboots 4th Friday 11 am–2 pm. Select the exact non-overlapping peer group label from the live ServiceNow catalog before submission; SR-02 must not use General_D if that would overlap SR-01. |
 | Affinity Rule | N/A / None — physical server |
-| Description | HQVMGDPSFST2 — GDPS TEST physical file/service cluster node 2. TEST is the only new physical cluster. |
+| Description | HQVMGDPSFST2 — GDPS TEST physical file/service cluster node 2. |
 | Watchlist | Muyiwa Aniyikaye |
 
 ## Special Requirements
 
-Provision this physical server with hostname **HQVMGDPSFST2**. Do not rename without an approved architecture change.
+Provision this request as a **physical server** with hostname **HQVMGDPSFST2**. The `VM` characters are part of the established GPO hostname convention for this GDPS server and do not indicate that the platform is virtual. Do not rename without an approved architecture change.
 
-This server is a member of a two-node Windows Server Failover Cluster and must preserve the existing Alpha deployment pattern for the environment. Provide minimum 128 GB RAM, redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to independent storage paths/fabrics, Windows MPIO support, and shared HPE enterprise storage appropriate to the environment.
+This server is one member of a two-node Windows Server Failover Cluster and follows the Alpha two-node cluster pattern used in production. Provide minimum 128 GB RAM, minimum 300 GB usable native/local storage using hardware RAID 1 (mirrored), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to independent storage paths/fabrics, Windows MPIO support, and shared HPE enterprise storage.
 
-TEST HPE enterprise storage for Windows Server / WSFC; final capacity and LUN presentation per controlled GDPS storage design.
+TEST shared SAN storage baseline: **14.4 TB usable minimum**, with final LUN presentation per the controlled GDPS storage design/storage request.
 
-Use an independent File Share Witness for WSFC quorum. The witness contains quorum metadata only and must not reside on clustered GDPS business-data storage.
+Use an independent File Share Witness for WSFC quorum. The witness must reside on a third independent system, not on either TEST cluster node and not on the TEST cluster's own shared storage.
 
-Peer nodes in the same cluster must not be rebooted simultaneously. Patching and maintenance must preserve cluster availability.
+The two TEST nodes must not share an overlapping reboot window. SR-01 and SR-02 must be placed in different approved SCCM patch groups/windows so peer nodes are never rebooted simultaneously.
 
 Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and other infrastructure values are assigned by the appropriate GPO infrastructure teams.
 
-## Network Traceability Control
-
-The Alpha IP addresses above are **source-system traceability only**. They do not assign or reserve addresses for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
-
 ## Replacement Control
 
-This request follows the existing Alpha physical placement and recovery model. **TEST is the only new physical cluster.** All PROD, DR, and COOP requests identify the exact Alpha node being replaced.
-
-For COOP requests, the deployment location is **DCIAC — Data Center in a Crate (CRATE)**, matching the existing COOP setup.
-
-## Existing Network Traceability
-
-The Alpha DNS/IP information above is retained for source-system traceability and migration validation only. It does not assign or reserve an IP address for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
+TEST is the only new physical cluster and does not replace an existing Alpha TEST environment. Its design follows the Alpha two-node production cluster pattern for production-equivalent validation.
 
 ## Native Storage Baseline
 
-Minimum **300 GB usable native/local storage per physical server**. This requirement preserves the established Alpha physical-node native-storage baseline. Windows Server and locally installed GDPS applications/services use native server storage; shared clustered data remains on separately provisioned SAN storage.
+Minimum **300 GB usable native/local storage per physical server, hardware RAID 1 (mirrored)**. Windows Server and locally installed GDPS applications/services use native server storage; shared clustered data remains on separately provisioned SAN storage.
