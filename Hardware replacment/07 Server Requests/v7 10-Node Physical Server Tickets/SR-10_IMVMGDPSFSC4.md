@@ -14,6 +14,7 @@
 | Server Network | Server Distribution |
 | Purpose | GDPS COOP / DCIAC physical recovery cluster node replacing N13B. Requested hostname: IMVMGDPSFSC4. |
 | Existing Server Being Replaced | N13B - ALPHA13 / DCIAC03 COOP Cluster node. |
+| Existing Alpha DNS / IP Traceability | alpha13.gpo.gov - 172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44 (source cluster/service DNS set; node-specific split not established by DNS sweep) |
 | RDP Access | Matthew Taylor |
 | Patching Group | SCCM_Server_Patching_General_D — Server Reboots 4th Friday 11 am–2 pm, subject to cluster-safe sequential reboot coordination |
 | Affinity Rule | N/A / None — physical server |
@@ -39,3 +40,7 @@ Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and othe
 This request follows the existing Alpha physical placement and recovery model. **TEST is the only new physical cluster.** All PROD, DR, and COOP requests identify the exact Alpha node being replaced.
 
 For COOP requests, the deployment location is **DCIAC — Data Center in a Crate (CRATE)**, matching the existing COOP setup.
+
+## Existing Network Traceability
+
+The Alpha DNS/IP information above is retained for source-system traceability and migration validation only. It does not assign or reserve an IP address for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
