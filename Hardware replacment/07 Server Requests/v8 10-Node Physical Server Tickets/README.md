@@ -75,3 +75,11 @@ This folder supersedes **v7 10-Node Physical Server Tickets**. All ten tickets n
 - **Cluster:** active/active, dual independent fabrics, File Share Witness on a third system.
 - **Memory:** 128 GB flagged for vendor requirements document and ISB approval.
 - **Native storage:** C:\ 200 GB + D:\ 300 GB, 500 GB usable, hardware RAID 1, justified one-to-one against ALPHA3.
+
+## Storage request alignment
+
+- ST-01 — TEST / HQ — >=14.4 TB
+- ST-02 — PROD / HQ — >=14.4 TB
+- ST-03 — DR / IM — >=14.4 TB
+- ST-04 — COOP DCIAC02 — >=14.4 TB
+- ST-05 — COOP DCIAC03 — >=21.4 TB
