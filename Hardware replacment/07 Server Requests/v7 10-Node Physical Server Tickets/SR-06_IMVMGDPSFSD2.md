@@ -9,7 +9,7 @@
 | System Environment | DR |
 | Data Center | IM |
 | OS | Windows Server 2025 |
-| Data Drive Requirements | N/A — no authoritative GDPS business data on local disk |
+| Native / Local Storage Requirement | C:\\ = 150 GB. D:\\ = 330 GB. Both are native/local server storage. Shared clustered data remains on separately provisioned SAN storage. |
 | Memory | 128 GB minimum |
 | Server Network | Server Distribution |
 | Purpose | GDPS DR physical file/service cluster node 2 replacing N6B. Requested hostname: IMVMGDPSFSD2. |
@@ -44,3 +44,12 @@ For COOP requests, the deployment location is **DCIAC — Data Center in a Crate
 ## Existing Network Traceability
 
 The Alpha DNS/IP information above is retained for source-system traceability and migration validation only. It does not assign or reserve an IP address for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
+
+## Native Storage Baseline
+
+Provision the native/local Windows disk layout as:
+
+- **C:\\ = 150 GB** — Windows Server system/OS volume.
+- **D:\\ = 330 GB** — native/local GDPS application and server-local working volume.
+
+Shared clustered data remains on separately provisioned SAN storage.
