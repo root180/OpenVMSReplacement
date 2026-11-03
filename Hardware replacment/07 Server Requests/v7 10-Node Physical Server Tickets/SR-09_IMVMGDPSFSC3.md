@@ -9,7 +9,7 @@
 | System Environment | COOP |
 | Data Center | DCIAC (Data Center in a Crate) |
 | OS | Windows Server 2025 |
-| Native / Local Storage Requirement | Minimum 300 GB usable native/local server storage. Windows Server and locally installed GDPS applications/services reside on native server storage. Shared clustered data remains on separately provisioned SAN storage. |
+| Native / Local Storage Requirement | C:\\ = 150 GB. D:\\ = 330 GB. Both are native/local server storage. Shared clustered data remains on separately provisioned SAN storage. |
 | Memory | 128 GB minimum |
 | Server Network | Server Distribution |
 | Purpose | GDPS COOP / DCIAC physical recovery cluster node replacing N13A. Requested hostname: IMVMGDPSFSC3. |
@@ -47,4 +47,9 @@ The Alpha DNS/IP information above is retained for source-system traceability an
 
 ## Native Storage Baseline
 
-Minimum **300 GB usable native/local storage per physical server**. This requirement preserves the established Alpha physical-node native-storage baseline. Windows Server and locally installed GDPS applications/services use native server storage; shared clustered data remains on separately provisioned SAN storage.
+Provision the native/local Windows disk layout as:
+
+- **C:\\ = 150 GB** — Windows Server system/OS volume.
+- **D:\\ = 330 GB** — native/local GDPS application and server-local working volume.
+
+Shared clustered data remains on separately provisioned SAN storage.
