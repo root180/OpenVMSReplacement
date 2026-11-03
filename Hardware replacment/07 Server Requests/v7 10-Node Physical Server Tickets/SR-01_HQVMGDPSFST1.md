@@ -47,3 +47,17 @@ Provision the native/local Windows disk layout as:
 - **D:\\ = 330 GB** — native/local GDPS application and server-local working volume.
 
 Shared clustered data remains on separately provisioned SAN storage.
+
+## Storage Disk Justification
+
+The native Windows disk layout is based on the current Alpha3 production node roles:
+
+| Windows drive | Replaces on Alpha3 | Alpha3 size | Basis |
+|---|---|---:|---|
+| **C:\\ = 150 GB** | System disk `ALPHA3SYS` (OS, system software) | 200 GB, 118 GB used | The OS role moves from SAN to local disk. 150 GB covers today's usage plus Windows update growth. |
+| **D:\\ = 330 GB** | Local disk `N3B_PAGE` (paging) + locally installed services | 300 GB | Matches the Alpha dedicated 300 GB local disk, plus room for the GDPS services that will run locally. |
+| **Total 480 GB** | — | **500 GB** (200 + 300) | Slightly less than the Alpha uses today for the same roles. |
+
+**ServiceNow justification text:**
+
+> Sizes are based on the current Alpha3 production node. The Alpha uses a 200 GB system disk (ALPHA3SYS, 118 GB used) and a 300 GB local disk (N3B_PAGE) per node, 500 GB total for system and paging. On Windows, both roles move to local storage: C:\\ (150 GB) replaces the system disk, and D:\\ (330 GB) replaces the local paging disk and hosts locally installed GDPS services. Total 480 GB, mirrored. Business data remains on SAN.
