@@ -33,6 +33,30 @@ The physical deployment follows the existing Alpha setup. This is a technology r
 - 8 one-for-one physical Alpha replacements
 - **10 physical GDPS server requests total**
 
+## Physical node and network replacement principle
+
+One physical Alpha server is replaced by one physical GDPS server. A one-for-one physical replacement does **not** imply a one-IP-for-one-IP design.
+
+The existing Alpha physical nodes can have multiple IP addresses and network interfaces, and the replacement GDPS physical nodes may likewise require multiple IP addresses and interfaces to reproduce the existing network functions. Depending on the existing role, those functions may include:
+
+- primary server or management connectivity;
+- cluster/private connectivity;
+- service-facing connectivity;
+- storage-related network connectivity where applicable; and
+- clustered client-access or service IPs that belong to the cluster/service identity rather than to the physical node itself.
+
+The objective is to preserve the existing network function and availability behavior, not to blindly copy every Alpha address onto the replacement server.
+
+For build and cutover:
+
+1. Replace each existing Alpha physical node with its mapped GDPS physical node.
+2. Provision the GDPS node with the network interfaces and IP addresses required to reproduce the existing node role.
+3. Keep cluster/service identities distinct from physical-node identities.
+4. Treat existing Alpha IP information in the ticket set as source-system traceability unless an address is explicitly approved for reuse.
+5. Move any legacy clustered service, DNS, SMB, or client-access identity only after the prior Alpha owner has been released and the cutover plan authorizes activation on GDPS.
+
+Therefore, **one physical Alpha server replacing one physical GDPS server may legitimately involve multiple IP addresses on the replacement server**, where the existing configuration requires them.
+
 ## Placement control
 
 HQ and IM are used for the normal TEST/PROD/DR infrastructure according to the existing deployment pattern. COOP remains in the **DCIAC Data Center in a Crate** and must not be reclassified as an ordinary IM server deployment merely because the hostname uses the IM site prefix.
