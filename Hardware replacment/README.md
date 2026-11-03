@@ -2,23 +2,54 @@
 
 This folder is the controlled repository for GDPS hardware replacement architecture, acquisition, storage, network, clustering, migration, and supporting evidence.
 
+## Current acquisition baseline
+
+- **10 physical GDPS servers**
+- five separate two-node physical WSFC clusters
+- TEST: 2 nodes at HQ
+- PROD: 2 nodes at HQ
+- DR: 2 nodes at IM
+- COOP DCIAC02: 2 nodes
+- COOP DCIAC03: 2 nodes
+- DEV: separate virtual-server replacement
+
+## Per-node native storage
+
+Every physical node:
+
+- C:\ = 200 GB
+- D:\ = 300 GB
+- 500 GB usable total
+- hardware RAID 1 mirrored
+- minimum 128 GB RAM
+
+## Shared storage
+
+- ST-01 TEST >=14.4 TB
+- ST-02 PROD >=14.4 TB
+- ST-03 DR >=14.4 TB
+- ST-04 COOP DCIAC02 >=14.4 TB
+- ST-05 COOP DCIAC03 >=21.4 TB
+
+Current RAIDSET00-RAIDSET09 used baseline is approximately 1,290 GB. Controlled mapped minimum is >=2,050 GB, including LUN01 >=600 GB. Nine additional ALPHA3 source volumes require explicit disposition.
+
 ## Folder structure
 
-- `01 Existing Hardware/` — current Alpha/OpenVMS hardware, storage, DCIAC, and operational evidence.
-- `02 New Acquisition/` — GDPS Hardware Master, CDW-G SOW, costing/BOM, and procurement artifacts.
-- `03 Storage/` — HPE Windows/WSFC storage architecture, LUN sizing, FC/MPIO, and replication.
-- `04 Network/` — GDPS network architecture, addressing, firewall boundaries, and network figures.
-- `05 Cluster and SMB/` — WSFC, File Share Witness, SMB namespace, and service-identity standards.
-- `06 Cutover and Migration/` — migration plans, production cutover runbooks, rollback, and recovery procedures.
-- `07 Server Requests/` — physical server provisioning request forms.
-- `08 Diagrams/` — controlled network and storage figures.
-- `09 Reference and Standards/` — supporting security, architecture, procurement, and operational references.
-- `10 Library Index/` — controlled-document register, version index, and superseded-history tracking.
-
-## Locked storage rule
-
-LUN00-LUN09 capacities are minimum sizing floors. They may be provisioned larger but never smaller than their controlled minimums. Current used-space values remain the migration baseline.
+- `01 Existing Hardware/` — source Alpha/OpenVMS evidence and verified baseline
+- `02 New Acquisition/` — Hardware Master, CDW-G SOW, costing/BOM
+- `03 Storage/` — storage architecture and ST-01 through ST-05
+- `04 Network/` — network architecture and source addressing anchors
+- `05 Cluster and SMB/` — five-cluster WSFC and SMB standards
+- `06 Cutover and Migration/` — migration and cutover procedures
+- `07 Server Requests/` — authoritative v8 10-server request set
+- `08 Diagrams/` — controlled figure register
+- `09 Reference and Standards/` — supporting references
+- `10 Library Index/` — controlled-document register
 
 ## Locked SMB cutover rule
 
 During migration GDPS uses alpha0-1, alpha3-1, and alpha6-1. At authorized cutover the old owner is disabled/released before GDPS assumes alpha0, alpha3, or alpha6. Duplicate ownership of those SMB client-access identities is prohibited anywhere in the GPO enterprise namespace.
+
+## Procurement authority
+
+Use `10 Library Index/CURRENT_CONTROLLED_DOCUMENTS.md` to determine the current implementation and procurement baseline. Older files retained for history are not current acquisition authority.
