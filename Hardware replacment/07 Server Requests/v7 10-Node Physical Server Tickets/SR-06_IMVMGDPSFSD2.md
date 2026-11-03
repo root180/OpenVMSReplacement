@@ -14,6 +14,7 @@
 | Server Network | Server Distribution |
 | Purpose | GDPS DR physical file/service cluster node 2 replacing N6B. Requested hostname: IMVMGDPSFSD2. |
 | Existing Server Being Replaced | N6B - ALPHA6 Production Backup / DR Cluster node. |
+| Existing Alpha DNS / IP Traceability | alpha6.gpo.gov - 172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41 (source cluster/service DNS set; node-specific split not established by DNS sweep) |
 | RDP Access | Matthew Taylor |
 | Patching Group | SCCM_Server_Patching_General_D — Server Reboots 4th Friday 11 am–2 pm, subject to cluster-safe sequential reboot coordination |
 | Affinity Rule | N/A / None — physical server |
@@ -39,3 +40,7 @@ Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and othe
 This request follows the existing Alpha physical placement and recovery model. **TEST is the only new physical cluster.** All PROD, DR, and COOP requests identify the exact Alpha node being replaced.
 
 For COOP requests, the deployment location is **DCIAC — Data Center in a Crate (CRATE)**, matching the existing COOP setup.
+
+## Existing Network Traceability
+
+The Alpha DNS/IP information above is retained for source-system traceability and migration validation only. It does not assign or reserve an IP address for the new GDPS server. New GDPS IP/DNS/VLAN values remain subject to GPO Network/Security assignment.
