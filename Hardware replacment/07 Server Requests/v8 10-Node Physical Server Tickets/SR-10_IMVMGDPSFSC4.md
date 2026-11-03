@@ -28,7 +28,7 @@ Provision this request as a **physical server** with hostname **IMVMGDPSFSC4**. 
 
 This server is one member of the two-node GDPS COOP Windows Server Failover Cluster with peer node **IMVMGDPSFSC3** (SR-09). Both nodes are active (active/active), matching the existing Alpha clusters. Provide minimum 128 GB RAM, native/local Windows storage with C:\ = 200 GB and D:\ = 300 GB (500 GB total, hardware RAID 1), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to two independent fabrics (as the dual Brocade fabrics on the Alpha clusters), Windows MPIO support, and shared HPE enterprise storage.
 
-COOP / DCIAC03 shared recovery storage baseline: **21.4 TB usable minimum** (parity with the ALPHA13 HPE Primera array), with final LUN presentation per the controlled GDPS storage design and storage request ST-04. Production data is replicated from PROD (HQ) to DCIAC03, as ALPHA3 replicates to ALPHA13 today.
+COOP / DCIAC03 shared recovery storage baseline: **21.4 TB usable minimum** (parity with the ALPHA13 HPE Primera array), with final LUN presentation per the controlled GDPS storage design and storage request ST-05. Production data is replicated from PROD (HQ) to DCIAC03, as ALPHA3 replicates to ALPHA13 today.
 
 Use an independent File Share Witness for WSFC quorum. The witness must reside on a third independent system: not on either COOP cluster node and not on the COOP cluster's own shared storage. It holds quorum metadata only.
 
