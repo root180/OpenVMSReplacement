@@ -11,7 +11,7 @@
 | OS | Windows Server 2025 |
 | Data Drive Requirements | C:\ = 200 GB. D:\ = 300 GB. |
 | Native / Local Storage Requirement | C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage. |
-| Memory | 128 GB minimum. Exceeds the 16 GB standard: vendor-supplied requirements document and ISB approval required. |
+| Memory | 128 GB minimum. See `GDPS_Memory_RAM_Requirement_Justification_v1.0.md` for the GPO system-owner engineering justification covering SR-01 through SR-10. |
 | Server Network | Server Distribution |
 | Purpose | GDPS TEST physical file/service cluster node 2. TEST follows the Alpha two-node cluster pattern used in production so production-equivalent clustering, storage, failover, and recovery can be validated before release. Requested hostname: HQVMGDPSFST2. |
 | Existing Server Being Replaced | N/A - new GDPS TEST environment; no existing Alpha node is being replaced. |
