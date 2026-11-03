@@ -2,11 +2,20 @@
 
 ## WSFC baseline
 
-TEST, PROD, DR, and COOP are separate two-node Windows Server Failover Clusters.
+TEST, PROD, DR, COOP DCIAC02, and COOP DCIAC03 are five separate two-node Windows Server Failover Clusters. Total physical WSFC nodes: **10**.
+
+Cluster pairs are:
+
+- TEST: HQVMGDPSFST1 + HQVMGDPSFST2 at HQ
+- PROD: HQVMGDPSFSP1 + HQVMGDPSFSP2 at HQ
+- DR: IMVMGDPSFSD1 + IMVMGDPSFSD2 at IM
+- COOP DCIAC02: IMVMGDPSFSC1 + IMVMGDPSFSC2
+- COOP DCIAC03: IMVMGDPSFSC3 + IMVMGDPSFSC4
 
 Each cluster requires:
 
 - two physical nodes
+- C:\\ 200 GB + D:\\ 300 GB local storage, 500 GB usable total, hardware RAID 1
 - independent File Share Witness
 - HPE enterprise storage for Windows Server / WSFC
 - redundant Fibre Channel
@@ -37,4 +46,8 @@ At no time may two hosts, clusters, aliases, or service endpoints anywhere in th
 
 ## Witness rule
 
-The File Share Witness contains quorum metadata only and must not reside on clustered GDPS business-data storage.
+The File Share Witness contains quorum metadata only and must reside on a third independent system. It must not be hosted on either peer node or on that cluster's own shared business-data storage.
+
+## Patching rule
+
+Peer nodes must use non-overlapping reboot windows and must never be rebooted together. DR and either COOP recovery cluster must not be intentionally taken down in the same maintenance window as PROD.
