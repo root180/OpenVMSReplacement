@@ -11,7 +11,7 @@
 | OS | Windows Server 2025 |
 | Data Drive Requirements | C:\ = 200 GB. D:\ = 300 GB. |
 | Native / Local Storage Requirement | C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage. |
-| Memory | 128 GB minimum. Exceeds the 16 GB standard: vendor-supplied requirements document and ISB approval required. |
+| Memory | 128 GB minimum. See `GDPS_Memory_RAM_Requirement_Justification_v1.0.md` for the GPO system-owner engineering justification covering SR-01 through SR-10. |
 | Server Network | Server Distribution |
 | Purpose | GDPS PROD physical file/service cluster node 1 replacing N3A. Requested hostname: HQVMGDPSFSP1. |
 | Existing Server Being Replaced | N3A - ALPHA3 Production Cluster node (HPE Integrity i6; HPE 3PAR storage). |
