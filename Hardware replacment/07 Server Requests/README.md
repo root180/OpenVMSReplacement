@@ -1,10 +1,10 @@
 # Server Requests
 
-This folder contains the **single authoritative GDPS physical-server request set**.
+This folder contains the authoritative GDPS physical-server request set.
 
 Current controlled set:
 
-- `v7 10-Node Physical Server Tickets/`
+- `v8 10-Node Physical Server Tickets/`
 
 That folder contains:
 
@@ -17,7 +17,8 @@ That folder contains:
 - TEST: 2 new physical nodes
 - PROD: 2 replacement physical nodes
 - DR: 2 replacement physical nodes
-- COOP: 4 replacement physical nodes
+- COOP DCIAC02: 2 replacement physical nodes
+- COOP DCIAC03: 2 replacement physical nodes
 - **Total: 10 physical GDPS servers**
 
 ## Replacement rule
@@ -32,16 +33,20 @@ DR replaces ALPHA6:
 - N6A
 - N6B
 
-COOP remains in the DCIAC Data Center in a Crate and replaces both existing COOP clusters:
-
-ALPHA10:
+COOP DCIAC02 replaces ALPHA10:
 - ALPHA11
 - ALPHA12
 
-ALPHA13:
-- N13A
-- N13B
+COOP DCIAC03 replaces the two physical ALPHA13 nodes. Individual source-node names remain to be confirmed from ALPHA13 before final traceability is closed.
 
 ALPHA0 is handled separately by the DEV virtualization design and is not part of this physical-server request set.
+
+## Storage request alignment
+
+- SR-01/SR-02 -> ST-01
+- SR-03/SR-04 -> ST-02
+- SR-05/SR-06 -> ST-03
+- SR-07/SR-08 -> ST-04
+- SR-09/SR-10 -> ST-05
 
 Server names are architecture-controlled identifiers and must not be changed during provisioning without architecture reconciliation.
