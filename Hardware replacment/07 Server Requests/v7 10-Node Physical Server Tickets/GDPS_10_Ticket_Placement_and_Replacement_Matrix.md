@@ -1,21 +1,67 @@
 # GDPS 10-Ticket Placement and Replacement Matrix
 
-This matrix is the authoritative placement and replacement reference for the ten GDPS physical-server ServiceNow requests.
+This matrix is the authoritative placement, replacement, and existing-network traceability reference for the ten GDPS physical-server ServiceNow requests.
 
 The deployment follows the existing Alpha setup. TEST is the only new physical cluster. PROD, DR, and COOP preserve the existing physical replacement relationships and site model.
 
-| Ticket | New GDPS Node | Environment | New Node Location | Existing Alpha System | Existing Node Replaced | Replacement Status |
-|---|---|---|---|---|---|---|
-| SR-01 | HQVMGDPSFST1 | TEST | HQ | None | N/A | New TEST node; no existing Alpha replacement |
-| SR-02 | HQVMGDPSFST2 | TEST | HQ | None | N/A | New TEST node; no existing Alpha replacement |
-| SR-03 | HQVMGDPSFSP1 | PROD | HQ | ALPHA3 | N3A | Direct physical replacement |
-| SR-04 | HQVMGDPSFSP2 | PROD | HQ | ALPHA3 | N3B | Direct physical replacement |
-| SR-05 | IMVMGDPSFSD1 | DR | IM | ALPHA6 | N6A | Direct physical replacement |
-| SR-06 | IMVMGDPSFSD2 | DR | IM | ALPHA6 | N6B | Direct physical replacement |
-| SR-07 | IMVMGDPSFSC1 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA11 | Direct physical COOP replacement |
-| SR-08 | IMVMGDPSFSC2 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA12 | Direct physical COOP replacement |
-| SR-09 | IMVMGDPSFSC3 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13A | Direct physical COOP replacement |
-| SR-10 | IMVMGDPSFSC4 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13B | Direct physical COOP replacement |
+| Ticket | New GDPS Node | Environment | New Node Location | Existing Alpha System | Existing Node Replaced | Existing Alpha DNS / IP Traceability | Replacement Status |
+|---|---|---|---|---|---|---|---|
+| SR-01 | HQVMGDPSFST1 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
+| SR-02 | HQVMGDPSFST2 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
+| SR-03 | HQVMGDPSFSP1 | PROD | HQ | ALPHA3 | N3A | alpha3.gpo.gov: 172.16.35.16, 172.16.35.15, 172.16.35.20, 172.16.35.19 | Direct physical replacement |
+| SR-04 | HQVMGDPSFSP2 | PROD | HQ | ALPHA3 | N3B | alpha3.gpo.gov: 172.16.35.16, 172.16.35.15, 172.16.35.20, 172.16.35.19 | Direct physical replacement |
+| SR-05 | IMVMGDPSFSD1 | DR | IM | ALPHA6 | N6A | alpha6.gpo.gov: 172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41 | Direct physical replacement |
+| SR-06 | IMVMGDPSFSD2 | DR | IM | ALPHA6 | N6B | alpha6.gpo.gov: 172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41 | Direct physical replacement |
+| SR-07 | IMVMGDPSFSC1 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
+| SR-08 | IMVMGDPSFSC2 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA12 | alpha12.gpo.gov: 172.23.5.45, 172.23.5.44 | Direct physical COOP replacement |
+| SR-09 | IMVMGDPSFSC3 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13A | alpha13.gpo.gov: 172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44 | Direct physical COOP replacement |
+| SR-10 | IMVMGDPSFSC4 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13B | alpha13.gpo.gov: 172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44 | Direct physical COOP replacement |
+
+## Network traceability note
+
+The IP addresses above are the current DNS A-record results captured from the GPO network for the existing Alpha names. They are retained for migration and replacement traceability.
+
+They are **not** assignments or reservations for the new GDPS servers. New GDPS IP addresses, DNS records, VLANs, and related network values remain subject to GPO Network/Security assignment.
+
+For ALPHA3, ALPHA6, and ALPHA13, the DNS command returned the complete address set for the Alpha cluster/service name. The command itself does not establish which individual addresses belong to N3A versus N3B, N6A versus N6B, or N13A versus N13B. Therefore the full source-cluster address set is retained on both corresponding replacement tickets rather than inventing a node-specific split.
+
+ALPHA11 and ALPHA12 resolve independently and therefore their returned addresses are recorded directly against their corresponding COOP replacement tickets.
+
+## DNS discovery command retained for safekeeping
+
+The following PowerShell command was run from the GPO network to capture the current Alpha DNS A records:
+
+```powershell
+0..20 | ForEach-Object { $n="alpha$_.gpo.gov"; try { $ip=(Resolve-DnsName $n -Type A -ErrorAction Stop).IPAddress -join ', '; "{0,-18} {1}" -f $n,$ip } catch { "{0,-18} NOT FOUND" -f $n } }
+```
+
+### Captured results
+
+```text
+alpha0.gpo.gov     172.23.4.43, 172.23.4.42, 172.23.4.45, 172.23.4.44
+alpha1.gpo.gov     172.23.4.43, 172.23.4.42
+alpha2.gpo.gov     172.23.4.45, 172.23.4.44
+alpha3.gpo.gov     172.16.35.16, 172.16.35.15, 172.16.35.20, 172.16.35.19
+alpha4.gpo.gov     NOT FOUND
+alpha5.gpo.gov     NOT FOUND
+alpha6.gpo.gov     172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41
+alpha7.gpo.gov     172.19.128.18, 172.19.128.15, 172.19.128.16, 172.19.128.17
+alpha8.gpo.gov     172.19.128.22, 172.19.128.19, 172.19.128.20, 172.19.128.21
+alpha9.gpo.gov     NOT FOUND
+alpha10.gpo.gov    172.23.5.45, 172.23.5.42, 172.23.5.44, 172.23.5.43
+alpha11.gpo.gov    172.23.5.42, 172.23.5.43
+alpha12.gpo.gov    172.23.5.45, 172.23.5.44
+alpha13.gpo.gov    172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44
+alpha14.gpo.gov    NOT FOUND
+alpha15.gpo.gov    NOT FOUND
+alpha16.gpo.gov    NOT FOUND
+alpha17.gpo.gov    NOT FOUND
+alpha18.gpo.gov    NOT FOUND
+alpha19.gpo.gov    NOT FOUND
+alpha20.gpo.gov    NOT FOUND
+```
+
+ALPHA0, ALPHA1, and ALPHA2 are retained in the captured command output for evidentiary completeness, but they are not part of this physical-server request set because ALPHA0 is being replaced by the separate GDPS DEV virtual-server design.
 
 ## Physical-server count
 
@@ -24,10 +70,6 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 - DR: 2 replacement physical nodes
 - COOP: 4 replacement physical nodes
 - Total: **10 physical GDPS server requests**
-
-## DEV / ALPHA0 disposition
-
-ALPHA0 is not part of this physical-server request set. Its existing physical nodes, ALPHA1 and ALPHA2, are accounted for separately through the GDPS DEV virtualization design.
 
 ## Placement rule
 
