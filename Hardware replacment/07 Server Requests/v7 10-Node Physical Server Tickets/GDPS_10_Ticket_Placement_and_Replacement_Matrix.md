@@ -9,11 +9,11 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 | SR-01 | HQVMGDPSFST1 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
 | SR-02 | HQVMGDPSFST2 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
 | SR-03 | HQVMGDPSFSP1 | PROD | HQ | ALPHA3 | N3A | alpha3.gpo.gov: 172.16.35.16, 172.16.35.15, 172.16.35.20, 172.16.35.19 | Direct physical replacement |
-| SR-04 | HQVMGDPSFSP2 | PROD | HQ | ALPHA3 | N3B | alpha3.gpo.gov: 172.16.35.16, 172.16.35.15, 172.16.35.20, 172.16.35.19 | Direct physical replacement |
+| SR-04 | HQVMGDPSFSP2 | PROD | HQ | ALPHA3 | N3B | N3B: 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3); cluster alias alpha3.gpo.gov | Direct physical replacement |
 | SR-05 | IMVMGDPSFSD1 | DR | IM | ALPHA6 | N6A | alpha6.gpo.gov: 172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41 | Direct physical replacement |
 | SR-06 | IMVMGDPSFSD2 | DR | IM | ALPHA6 | N6B | alpha6.gpo.gov: 172.19.128.44, 172.19.128.43, 172.19.128.42, 172.19.128.41 | Direct physical replacement |
-| SR-07 | IMVMGDPSFSC1 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
-| SR-08 | IMVMGDPSFSC2 | COOP | DCIAC / Data Center in a Crate | ALPHA10 | ALPHA12 | alpha12.gpo.gov: 172.23.5.45, 172.23.5.44 | Direct physical COOP replacement |
+| SR-07 | IMVMGDPSFSC1 | COOP | DCIAC02 / Data Center in a Crate | ALPHA10 (COOP / DCIAC02) | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
+| SR-08 | IMVMGDPSFSC2 | COOP | DCIAC02 / Data Center in a Crate | ALPHA10 (COOP / DCIAC02) | ALPHA12 | alpha12.gpo.gov: 172.23.5.45, 172.23.5.44 | Direct physical COOP replacement |
 | SR-09 | IMVMGDPSFSC3 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13A | alpha13.gpo.gov: 172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44 | Direct physical COOP replacement |
 | SR-10 | IMVMGDPSFSC4 | COOP | DCIAC / Data Center in a Crate | ALPHA13 | N13B | alpha13.gpo.gov: 172.23.6.43, 172.23.6.42, 172.23.6.45, 172.23.6.44 | Direct physical COOP replacement |
 
@@ -23,7 +23,7 @@ The IP addresses above are the current DNS A-record results captured from the GP
 
 They are **not** assignments or reservations for the new GDPS servers. New GDPS IP addresses, DNS records, VLANs, and related network values remain subject to GPO Network/Security assignment.
 
-For ALPHA3, ALPHA6, and ALPHA13, the DNS command returned the complete address set for the Alpha cluster/service name. The command itself does not establish which individual addresses belong to N3A versus N3B, N6A versus N6B, or N13A versus N13B. Therefore the full source-cluster address set is retained on both corresponding replacement tickets rather than inventing a node-specific split.
+For ALPHA3, the DNS sweep alone returned the cluster/service address set. Subsequent node-level verification established N3B as 172.16.35.19 (IE2, primary) and 172.16.35.20 (IE3), with alpha3.gpo.gov retained as the cluster alias. N3A remains at cluster-level traceability until separately verified. For ALPHA6 and ALPHA13, the DNS command still does not establish the individual A/B node split, so their full source-cluster address sets are retained rather than inventing node-specific assignments.
 
 ALPHA11 and ALPHA12 resolve independently and therefore their returned addresses are recorded directly against their corresponding COOP replacement tickets.
 
@@ -79,3 +79,10 @@ ALPHA0, ALPHA1, and ALPHA2 are retained in the captured command output for evide
 - COOP: DCIAC / Data Center in a Crate
 
 COOP remains the DCIAC / CRATE recovery environment and is not treated as an ordinary IM server deployment merely because the GDPS COOP hostnames use the IM site prefix.
+
+## Confirmed Alpha topology correction
+
+- **ALPHA10 is the COOP cluster in DCIAC02.**
+- ALPHA11 and ALPHA12 are the two ALPHA10 COOP nodes.
+- SR-07 and SR-08 therefore replace the existing **ALPHA10 / DCIAC02 COOP** physical nodes one-for-one.
+- N3B node-level network traceability is confirmed as **172.16.35.19 (IE2, primary)** and **172.16.35.20 (IE3)**; `alpha3.gpo.gov` is the cluster alias.
