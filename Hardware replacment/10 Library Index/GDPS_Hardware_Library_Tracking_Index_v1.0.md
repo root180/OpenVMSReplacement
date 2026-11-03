@@ -13,6 +13,7 @@
 | GDPS Production Cutover Operations Runbook | v1.8 | Current |
 | GDPS SMB Namespace Migration and Cutover Plan | v1.3 | Current |
 | GDPS CDW-G Costing and Acquisition List | v11 | Current — previous 8-server subtotal superseded |
+| GDPS Memory (RAM) Requirement Justification | v1.0 | Current — 128 GB per physical node |
 | GDPS Physical Server Request Set | v8 | Current — 10 forms |
 | GDPS Diagram Register | current | Must show DCIAC02 and DCIAC03 separately |
 
