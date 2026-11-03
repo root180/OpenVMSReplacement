@@ -9,7 +9,7 @@
 | System Environment | COOP |
 | Data Center | DCIAC (Data Center in a Crate) |
 | OS | Windows Server 2025 |
-| Native / Local Storage Requirement | C:\\ = 150 GB. D:\\ = 330 GB. Both are native/local server storage. Shared clustered data remains on separately provisioned SAN storage. |
+| Native / Local Storage Requirement | C:\\ = 200 GB. D:\\ = 300 GB. Total native/local storage = 500 GB, mirrored. Shared clustered business data remains on separately provisioned SAN storage. |
 | Memory | 128 GB minimum |
 | Server Network | Server Distribution |
 | Purpose | GDPS COOP / DCIAC physical recovery cluster node replacing ALPHA11. Requested hostname: IMVMGDPSFSC1. |
@@ -49,21 +49,21 @@ The Alpha DNS/IP information above is retained for source-system traceability an
 
 Provision the native/local Windows disk layout as:
 
-- **C:\\ = 150 GB** — Windows Server system/OS volume.
-- **D:\\ = 330 GB** — native/local GDPS application and server-local working volume.
+- **C:\\ = 200 GB** — Windows Server system/OS volume; one-to-one capacity match to Alpha3 `ALPHA3SYS`.
+- **D:\\ = 300 GB** — native/local GDPS application, paging, and server-local working volume; one-to-one capacity match to N3B `N3B_PAGE`.
+- **Total native/local storage = 500 GB, mirrored.**
 
-Shared clustered data remains on separately provisioned SAN storage.
-
+Shared clustered business data remains on separately provisioned SAN storage.
 ## Storage Disk Justification
 
-The native Windows disk layout is based on the current Alpha3 production node roles:
+The native Windows disk layout matches the current Alpha3 production node roles one-to-one:
 
 | Windows drive | Replaces on Alpha3 | Alpha3 size | Basis |
 |---|---|---:|---|
-| **C:\\ = 150 GB** | System disk `ALPHA3SYS` (OS, system software) | 200 GB, 118 GB used | The OS role moves from SAN to local disk. 150 GB covers today's usage plus Windows update growth. |
-| **D:\\ = 330 GB** | Local disk `N3B_PAGE` (paging) + locally installed services | 300 GB | Matches the Alpha dedicated 300 GB local disk, plus room for the GDPS services that will run locally. |
-| **Total 480 GB** | — | **500 GB** (200 + 300) | Slightly less than the Alpha uses today for the same roles. |
+| **C:\\ = 200 GB** | System disk `ALPHA3SYS` (OS, system software) | 200 GB | One-to-one replacement of the current Alpha3 system-disk capacity. |
+| **D:\\ = 300 GB** | Local disk `N3B_PAGE` (paging) + locally installed services | 300 GB | One-to-one replacement of the current Alpha3 local-disk capacity; locally installed GDPS services run here. |
+| **Total 500 GB** | — | **500 GB** (200 + 300) | Matches the current Alpha3 production node total for these roles. |
 
 **ServiceNow justification text:**
 
-> Sizes are based on the current Alpha3 production node. The Alpha uses a 200 GB system disk (ALPHA3SYS, 118 GB used) and a 300 GB local disk (N3B_PAGE) per node, 500 GB total for system and paging. On Windows, both roles move to local storage: C:\\ (150 GB) replaces the system disk, and D:\\ (330 GB) replaces the local paging disk and hosts locally installed GDPS services. Total 480 GB, mirrored. Business data remains on SAN.
+> Sizes match the current Alpha3 production node one-to-one. The Alpha uses a 200 GB system disk (ALPHA3SYS) and a 300 GB local disk (N3B_PAGE) per node. On Windows, C:\\ (200 GB) replaces the system disk and D:\\ (300 GB) replaces the local disk and hosts locally installed GDPS services. Total 500 GB, mirrored. Business data remains on SAN.
