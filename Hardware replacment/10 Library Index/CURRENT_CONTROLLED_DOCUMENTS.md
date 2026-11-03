@@ -1,19 +1,51 @@
 # Current Controlled Hardware Library
 
-| Folder | Controlled artifact | Current version |
+| Folder | Controlled artifact | Current version / baseline |
 |---|---|---|
-| 02 New Acquisition | GDPS_Hardware_Master_v4.3_Minimum_Capacity_Aligned | v4.3 |
-| 02 New Acquisition | GDPS_Hardware_Acquisition_SOW_CDWG_v1.9_Minimum_Capacity_Aligned | v1.9 |
-| 02 New Acquisition | GDPS_CDWG_Costing_Acquisition_List_v11_Minimum_Capacity_Aligned | v11 |
-| 03 Storage | GDPS_Storage_Architecture_and_LUN_Design_v1.1_Minimum_Capacity_Aligned | v1.1 |
-| 04 Network | GDPS_Network_Infrastructure_and_Addressing_Design_v1.5_Minimum_Capacity_Aligned | v1.5 |
-| 05 Cluster and SMB | GDPS_Windows_File_Cluster_and_Legacy_SMB_Namespace_Standard_v1.8_Minimum_Capacity_Aligned | v1.8 |
-| 06 Cutover and Migration | GDPS_Production_Cutover_Operations_Runbook_v1.8_Minimum_Capacity_Aligned | v1.8 |
-| 06 Cutover and Migration | GDPS_SMB_Namespace_Migration_and_Cutover_Plan_v1.3_Minimum_Capacity_Aligned | v1.3 |
-| 07 Server Requests | Eight physical server request forms | v5 |
-| 08 Diagrams | GDPS Network Figures | v4 Final |
-| 08 Diagrams | GDPS Storage Figures | v3 Minimum Capacity |
-| 10 Library Index | GDPS_Hardware_Library_Tracking_Index_v1.0 | v1.0 |
+| 02 New Acquisition | GDPS_Hardware_Master_v4.3.md | v4.3 — synchronized to 10 physical servers |
+| 02 New Acquisition | GDPS_Hardware_Acquisition_SOW_CDWG_v1.9.md | v1.9 — synchronized to 10 physical servers |
+| 02 New Acquisition | GDPS_CDWG_Costing_and_Acquisition_List_v11.md | v11 — 8-server subtotal superseded |
+| 03 Storage | GDPS_Storage_Architecture_and_LUN_Design_v1.1.md | v1.1 — current Alpha3 baseline |
+| 03 Storage / Storage Requests | ST-01 through ST-05 | Five controlled storage requests |
+| 04 Network | GDPS_Network_Infrastructure_and_Addressing_Design_v1.5.md | v1.5 — confirmed source anchors |
+| 05 Cluster and SMB | GDPS_Windows_File_Cluster_and_SMB_Namespace_Standard_v1.8.md | v1.8 — five two-node clusters |
+| 06 Cutover and Migration | GDPS Production Cutover Operations Runbook | v1.8 — unchanged |
+| 06 Cutover and Migration | GDPS SMB Namespace Migration and Cutover Plan | v1.3 — unchanged |
+| 07 Server Requests | v8 10-Node Physical Server Tickets | **v8 — 10 server request forms** |
+| 08 Diagrams | GDPS Diagram Register | current register requires two COOP sites |
+| 10 Library Index | GDPS_Hardware_Library_Tracking_Index_v1.0.md | v1.0 |
+
+## Authoritative physical-server baseline
+
+- TEST: 2
+- PROD: 2
+- DR: 2
+- COOP DCIAC02: 2
+- COOP DCIAC03: 2
+- **Total physical servers: 10**
+
+DEV is a separate virtual-server replacement and is not part of the physical acquisition count.
+
+## Authoritative storage baseline
+
+- ST-01 TEST: >=14.4 TB
+- ST-02 PROD: >=14.4 TB
+- ST-03 DR: >=14.4 TB
+- ST-04 COOP DCIAC02: >=14.4 TB
+- ST-05 COOP DCIAC03: >=21.4 TB
+- current RAIDSET00-RAIDSET09 used baseline: ≈1,290 GB
+- controlled mapped minimum: >=2,050 GB
+- LUN01 minimum: >=600 GB
+- nine additional ALPHA3 source volumes require explicit disposition
+
+## Native physical-server storage
+
+Every physical node:
+
+- C:\ = 200 GB
+- D:\ = 300 GB
+- 500 GB usable total
+- hardware RAID 1 mirrored
 
 ## Existing-hardware evidence to retain
 
@@ -29,4 +61,4 @@
 
 ## Implementation rule
 
-Only the versions identified above are current for implementation/procurement. Older generated versions belong in revision history and must not be treated as the implementation baseline.
+Only the current versions and baselines identified above are current for procurement and implementation. Older generated versions belong in revision history and must not be used to submit new server/storage requests.
