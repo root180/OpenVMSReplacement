@@ -5,6 +5,7 @@
 | 02 New Acquisition | GDPS_Hardware_Master_v4.3.md | v4.3 — synchronized to 10 physical servers |
 | 02 New Acquisition | GDPS_Hardware_Acquisition_SOW_CDWG_v1.9.md | v1.9 — synchronized to 10 physical servers |
 | 02 New Acquisition | GDPS_CDWG_Costing_and_Acquisition_List_v11.md | v11 — 8-server subtotal superseded |
+| 02 New Acquisition | GDPS_Memory_RAM_Requirement_Justification_v1.0.md | v1.0 — 128 GB per physical node justification |
 | 03 Storage | GDPS_Storage_Architecture_and_LUN_Design_v1.1.md | v1.1 — current Alpha3 baseline |
 | 03 Storage / Storage Requests | ST-01 through ST-05 | Five controlled storage requests |
 | 04 Network | GDPS_Network_Infrastructure_and_Addressing_Design_v1.5.md | v1.5 — confirmed source anchors |
