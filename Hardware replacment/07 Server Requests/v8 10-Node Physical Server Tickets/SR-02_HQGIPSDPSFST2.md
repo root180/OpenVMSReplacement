@@ -19,7 +19,7 @@
 | RDP Access | Matthew Taylor |
 | Patching Group | Node 2: approved patch group/window that does not overlap SR-01 (SCCM_Server_Patching_General_D, Server Reboots 4th Friday 11 am–2 pm). Select the exact catalog label in ServiceNow before submission. |
 | Affinity Rule | N/A / None — physical server |
-| Description | HQGIPSDPSFST2 — GDPS TEST physical file/service cluster node 2. TEST follows the Alpha two-node cluster pattern used in production so production-equivalent clustering, storage, failover, and recovery can be validated before release. |
+| Description | HQGIPSDPSFST2 — GDPS TEST physical file/service cluster node 2, paired with HQGIPSDPSFST1 (SR-01). Follows the existing Alpha two-node production cluster pattern to validate production-equivalent clustering, storage, failover, and recovery before release. |
 | Watchlist | Muyiwa Aniyikaye |
 
 ## Special Requirements
