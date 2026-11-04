@@ -5,7 +5,7 @@
 - System: GDPS
 - Environment: COOP
 - Location: DCIAC03 / Data Center in a Crate
-- Connected nodes: IMVMGDPSFSC3, IMVMGDPSFSC4
+- Connected nodes: IMGIPSDPSFSC3, IMGIPSDPSFSC4
 - Replaces: ALPHA13 two-node COOP cluster
 - Storage platform parity: HPE Primera
 - Minimum usable capacity: **>= 21.4 TB**
