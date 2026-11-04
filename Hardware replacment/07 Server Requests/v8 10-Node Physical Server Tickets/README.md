@@ -9,7 +9,7 @@ The physical deployment follows the existing Alpha setup. This is a technology r
 - **TEST** is the only new physical cluster.
 - **PROD** replaces ALPHA3 at HQ.
 - **DR** replaces ALPHA6 at IM.
-- **COOP** replaces both existing COOP clusters in the **DCIAC Data Center in a Crate (CRATE)**.
+- **COOP** replaces both existing COOP clusters. SR-09/10 are the selected HQ pair replacing N13A/N13B from ALPHA13 / DCIAC03; SR-07/08 retain their submitted IM names.
 - **ALPHA0** is handled separately by the DEV virtualization design and does not generate a physical-server request in this set.
 
 ## Authoritative node mapping
@@ -24,8 +24,8 @@ The physical deployment follows the existing Alpha setup. This is a technology r
 | SR-06 | IMGIPSDPSFSD2 | DR | IM | N6B — ALPHA6 |
 | SR-07 | IMGIPSDPSFSC1 | COOP | DCIAC02 / CRATE | ALPHA11 — ALPHA10 |
 | SR-08 | IMGIPSDPSFSC2 | COOP | DCIAC02 / CRATE | ALPHA12 — ALPHA10 |
-| SR-09 | IMGIPSDPSFSC3 | COOP | DCIAC03 / CRATE | N13A (to confirm) — ALPHA13 |
-| SR-10 | IMGIPSDPSFSC4 | COOP | DCIAC03 / CRATE | N13B (to confirm) — ALPHA13 |
+| SR-09 | HQGIPSDPSFSC3 | COOP | HQ | N13A — ALPHA13 / DCIAC03 |
+| SR-10 | HQGIPSDPSFSC4 | COOP | HQ | N13B — ALPHA13 / DCIAC03 |
 
 ## Count
 
@@ -59,7 +59,7 @@ Therefore, **one physical Alpha server replacing one physical GDPS server may le
 
 ## Placement control
 
-HQ and IM are used for the normal TEST/PROD/DR infrastructure according to the existing deployment pattern. COOP remains in the **DCIAC Data Center in a Crate** and must not be reclassified as an ordinary IM server deployment merely because the hostname uses the IM site prefix.
+SR-09 and SR-10 are located at **HQ**, a new placement decision for the ALPHA13 replacement pair. SR-07 and SR-08 retain their submitted IM names. Legacy DCIAC labels identify replacement sources and do not establish the new servers' physical destinations.
 
 ## ServiceNow submission
 
