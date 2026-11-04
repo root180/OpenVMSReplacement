@@ -9,11 +9,11 @@ This document defines the current GDPS hardware replacement topology and is sync
 | Environment | Server Count | Server Names | Site | Source Alpha capability |
 |---|---:|---|---|---|
 | DEV | 0 physical | Virtual GDPS DEV servers | Existing GPO virtualization | ALPHA0; separate virtual replacement |
-| TEST | 2 | HQVMGDPSFST1, HQVMGDPSFST2 | HQ | New TEST cluster based on production two-node pattern |
-| PROD | 2 | HQVMGDPSFSP1, HQVMGDPSFSP2 | HQ | ALPHA3 / N3A + N3B |
-| DR | 2 | IMVMGDPSFSD1, IMVMGDPSFSD2 | IM | ALPHA6 / N6A + N6B |
-| COOP DCIAC02 | 2 | IMVMGDPSFSC1, IMVMGDPSFSC2 | DCIAC02 / CRATE | ALPHA10 / ALPHA11 + ALPHA12 |
-| COOP DCIAC03 | 2 | IMVMGDPSFSC3, IMVMGDPSFSC4 | DCIAC03 / CRATE | ALPHA13 / two physical nodes |
+| TEST | 2 | HQGIPSDPSFST1, HQGIPSDPSFST2 | HQ | New TEST cluster based on production two-node pattern |
+| PROD | 2 | HQGIPSDPSFSP1, HQGIPSDPSFSP2 | HQ | ALPHA3 / N3A + N3B |
+| DR | 2 | IMGIPSDPSFSD1, IMGIPSDPSFSD2 | IM | ALPHA6 / N6A + N6B |
+| COOP DCIAC02 | 2 | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | DCIAC02 / CRATE | ALPHA10 / ALPHA11 + ALPHA12 |
+| COOP DCIAC03 | 2 | IMGIPSDPSFSC3, IMGIPSDPSFSC4 | DCIAC03 / CRATE | ALPHA13 / two physical nodes |
 
 **Physical server total: 10.**
 
