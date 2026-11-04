@@ -46,7 +46,7 @@ Together they represent approximately **2.3 TB allocated and 128 GB used**. Each
 
 ## Replication
 
-Configure DR as an independent PROD replication / production-backup target.
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Engineering requirements
 

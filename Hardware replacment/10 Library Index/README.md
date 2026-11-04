@@ -7,6 +7,5 @@ The index identifies:
 - current controlled documents
 - reference documents
 - diagram register
-- superseded history
 
-Only the current controlled versions should be used for implementation or procurement. Superseded versions are retained only for revision history.
+Use the controlled documents listed here for implementation and procurement.

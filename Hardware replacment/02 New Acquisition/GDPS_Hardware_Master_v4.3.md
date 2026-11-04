@@ -12,8 +12,8 @@ This document defines the current GDPS hardware replacement topology and is sync
 | TEST | 2 | HQGIPSDPSFST1, HQGIPSDPSFST2 | HQ | New TEST cluster based on production two-node pattern |
 | PROD | 2 | HQGIPSDPSFSP1, HQGIPSDPSFSP2 | HQ | ALPHA3 / N3A + N3B |
 | DR | 2 | IMGIPSDPSFSD1, IMGIPSDPSFSD2 | IM | ALPHA6 / N6A + N6B |
-| COOP DCIAC02 | 2 | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | DCIAC02 / CRATE | ALPHA10 / ALPHA11 + ALPHA12 |
-| COOP DCIAC03 | 2 | IMGIPSDPSFSC3, IMGIPSDPSFSC4 | DCIAC03 / CRATE | ALPHA13 / two physical nodes |
+| COOP IM | 2 | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | IM | ALPHA10 / ALPH11 + ALPH12 |
+| COOP HQ | 2 | HQGIPSDPSFSC3, HQGIPSDPSFSC4 | HQ | ALPHA13 / N13A + N13B |
 
 **Physical server total: 10.**
 
@@ -41,8 +41,8 @@ There are **five two-node physical WSFC clusters**:
 1. TEST — HQ
 2. PROD — HQ
 3. DR — IM
-4. COOP DCIAC02
-5. COOP DCIAC03
+4. COOP IM
+5. COOP HQ
 
 Each cluster requires an independent File Share Witness located on a third independent system, not on either peer node and not on that cluster's own shared data storage.
 
@@ -54,8 +54,8 @@ Each cluster requires an independent File Share Witness located on a third indep
 | TEST | ST-01 | >= 14.4 TB | Production-equivalent HPE enterprise storage |
 | PROD | ST-02 | >= 14.4 TB | ALPHA3 HPE 3PAR |
 | DR | ST-03 | >= 14.4 TB | ALPHA6 HPE 3PAR |
-| COOP DCIAC02 | ST-04 | >= 14.4 TB | ALPHA10 HPE 3PAR |
-| COOP DCIAC03 | ST-05 | >= 21.4 TB | ALPHA13 HPE Primera |
+| COOP IM | ST-04 | >= 14.4 TB | ALPHA10 HPE 3PAR |
+| COOP HQ | ST-05 | >= 21.4 TB | ALPHA13 HPE Primera |
 
 ## Existing Alpha hardware anchors
 
@@ -65,13 +65,11 @@ Each cluster requires an independent File Share Witness located on a third indep
 - ALPHA10: HPE Integrity i6, 2 nodes; DCIAC02 COOP; HPE 3PAR 14.4 TB.
 - ALPHA13: HPE Integrity i6, 2 nodes; DCIAC03 COOP; HPE Primera 21.4 TB.
 
-ALPHA13 individual node names remain subject to confirmation from the source system; the physical two-node ALPHA13 replacement relationship is controlled.
+ALPHA13 members N13A and N13B are confirmed by SHOW CLUSTER. N13A has IE2 172.23.6.42 and IE4 172.23.6.43; N13B has IE2 172.23.6.44 and IE4 172.23.6.45. All four interfaces use /25 masks.
 
 ## Recovery
 
-- PROD -> DR
-- PROD -> COOP DCIAC02
-- PROD -> COOP DCIAC03
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 - TEST rehearses production-equivalent clustering and recovery behavior with TEST data and identities.
 
 ## SMB migration identities

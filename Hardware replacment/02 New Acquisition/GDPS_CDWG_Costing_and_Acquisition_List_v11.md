@@ -8,8 +8,8 @@
 | TEST / HQ | 2 | HPE Windows/WSFC storage >= 14.4 TB usable |
 | PROD / HQ | 2 | HPE Windows/WSFC storage >= 14.4 TB usable |
 | DR / IM | 2 | HPE Windows/WSFC storage >= 14.4 TB usable |
-| COOP / DCIAC02 | 2 | HPE recovery storage >= 14.4 TB usable |
-| COOP / DCIAC03 | 2 | HPE recovery storage >= 21.4 TB usable |
+| COOP / IM | 2 | HPE recovery storage >= 14.4 TB usable |
+| COOP / HQ | 2 | HPE recovery storage >= 21.4 TB usable |
 
 **Physical server total: 10.**
 
@@ -34,15 +34,15 @@ Previous public-price planning references remain useful only as unit-price place
 - FC HBA baseline: approximately $7,947.07 each
 - Windows 16-core license planning baseline: approximately $774.05
 
-The prior **$569,260.40 subtotal was based on eight physical servers and is superseded**. Do not use that subtotal for acquisition approval.
+A current quote for all ten physical servers and five storage allocations is required for acquisition approval.
 
 The revised quote must price:
 
 - 10 physical servers, not 8
 - HBAs for all 10 physical nodes
-- DCIAC03 FC/fabric connectivity in addition to DCIAC02
-- five storage targets/allocations: TEST, PROD, DR, DCIAC02 COOP, DCIAC03 COOP
-- replication to DR, DCIAC02, and DCIAC03
+- HQ COOP FC/fabric connectivity in addition to IM COOP
+- five storage targets/allocations: TEST, PROD, ALPHA6 recovery at IM, COOP IM, COOP HQ
+- COOP replication design: to be determined by GPO network engineers
 - required optics/cabling
 - licensing
 - support
@@ -56,8 +56,8 @@ The revised quote must price:
 | ST-01 | TEST | 14.4 TB |
 | ST-02 | PROD | 14.4 TB |
 | ST-03 | DR | 14.4 TB |
-| ST-04 | COOP DCIAC02 | 14.4 TB |
-| ST-05 | COOP DCIAC03 | 21.4 TB |
+| ST-04 | COOP IM | 14.4 TB |
+| ST-05 | COOP HQ | 21.4 TB |
 
 ## LUN sizing control
 

@@ -2,15 +2,15 @@
 
 ## WSFC baseline
 
-TEST, PROD, DR, COOP DCIAC02, and COOP DCIAC03 are five separate two-node Windows Server Failover Clusters. Total physical WSFC nodes: **10**.
+TEST, PROD, DR, COOP IM, and COOP HQ are five separate two-node Windows Server Failover Clusters. Total physical WSFC nodes: **10**.
 
 Cluster pairs are:
 
 - TEST: HQGIPSDPSFST1 + HQGIPSDPSFST2 at HQ
 - PROD: HQGIPSDPSFSP1 + HQGIPSDPSFSP2 at HQ
 - DR: IMGIPSDPSFSD1 + IMGIPSDPSFSD2 at IM
-- COOP DCIAC02: IMGIPSDPSFSC1 + IMGIPSDPSFSC2
-- COOP DCIAC03: IMGIPSDPSFSC3 + IMGIPSDPSFSC4
+- COOP IM: IMGIPSDPSFSC1 + IMGIPSDPSFSC2
+- COOP HQ: HQGIPSDPSFSC3 + HQGIPSDPSFSC4
 
 Each cluster requires:
 

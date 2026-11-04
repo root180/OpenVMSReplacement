@@ -23,10 +23,10 @@ All ten requests are for **physical Windows Server 2025 servers**, each belongin
 | SR-04 | HQGIPSDPSFSP2 | PROD | HQ | ALPHA3 - N3B |
 | SR-05 | IMGIPSDPSFSD1 | DR | IM | ALPHA6 - N6A |
 | SR-06 | IMGIPSDPSFSD2 | DR | IM | ALPHA6 - N6B |
-| SR-07 | IMGIPSDPSFSC1 | COOP | DCIAC02 | ALPHA10 - ALPHA11 |
-| SR-08 | IMGIPSDPSFSC2 | COOP | DCIAC02 | ALPHA10 - ALPHA12 |
-| SR-09 | IMGIPSDPSFSC3 | COOP | DCIAC03 | ALPHA13 node A - source node name pending confirmation |
-| SR-10 | IMGIPSDPSFSC4 | COOP | DCIAC03 | ALPHA13 node B - source node name pending confirmation |
+| SR-07 | IMGIPSDPSFSC1 | COOP | IM | ALPHA10 - ALPH11 |
+| SR-08 | IMGIPSDPSFSC2 | COOP | IM | ALPHA10 - ALPH12 |
+| SR-09 | HQGIPSDPSFSC3 | COOP | HQ | N13A — ALPHA13 |
+| SR-10 | HQGIPSDPSFSC4 | COOP | HQ | N13B — ALPHA13 |
 
 The physical acquisition therefore consists of **five separate two-node clusters and ten physical servers total**.
 
@@ -53,8 +53,8 @@ ALPHA3 is the sizing standard because PROD carries the live workload. TEST mirro
 | TEST | HQGIPSDPSFST1, HQGIPSDPSFST2 | Production-class TEST based on ALPHA3 / GDPS PROD | 128 GB | TEST must reproduce the production node configuration for failover and cutover validation. |
 | PROD | HQGIPSDPSFSP1, HQGIPSDPSFSP2 | ALPHA3 N3A/N3B | 128 GB | Direct one-for-one memory match to measured ALPHA3 production nodes. |
 | DR | IMGIPSDPSFSD1, IMGIPSDPSFSD2 | ALPHA6 recovery role; sized to ALPHA3 production standard | 128 GB | Either DR node must support production recovery workload within its cluster. |
-| COOP DCIAC02 | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | ALPHA10 recovery role; sized to ALPHA3 production standard | 128 GB | DCIAC02 must support production COOP recovery workload. |
-| COOP DCIAC03 | IMGIPSDPSFSC3, IMGIPSDPSFSC4 | ALPHA13 recovery role; sized to ALPHA3 production standard | 128 GB | DCIAC03 must support production COOP recovery workload. |
+| COOP IM | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | ALPHA10 recovery role; sized to ALPHA3 production standard | 128 GB | DCIAC02 must support production COOP recovery workload. |
+| COOP HQ | HQGIPSDPSFSC3, HQGIPSDPSFSC4 | ALPHA13 recovery role; sized to ALPHA3 production standard | 128 GB | DCIAC03 must support production COOP recovery workload. |
 
 ## Why each node needs 128 GB
 
@@ -84,7 +84,7 @@ The 128 GB requirement preserves the production memory class being replaced whil
 
 Both nodes in a cluster should be equivalently sized so failover does not move the workload onto a materially smaller server.
 
-TEST uses the same node memory standard as PROD for production-equivalent rehearsal. DR, DCIAC02, and DCIAC03 use the same standard because they are recovery environments for production.
+TEST uses the same node memory standard as PROD for production-equivalent rehearsal. ALPHA6 recovery at IM, COOP IM, and COOP HQ use the same standard because they are recovery environments for production.
 
 ### 6. Physical-server lifecycle
 

@@ -2,7 +2,7 @@
 
 This matrix is the authoritative placement, replacement, and existing-network traceability reference for the ten GDPS physical-server ServiceNow requests.
 
-The deployment follows the existing Alpha setup. TEST is the only new physical cluster. PROD, DR, and COOP preserve the existing physical replacement relationships and site model. Every existing Alpha cluster is two HPE Integrity servers (active/active) with dual Brocade Fibre Channel switches and shared HPE storage.
+TEST is the only new physical cluster. The replacement relationships preserve one physical Alpha node per new physical GDPS server. The selected COOP destinations are IM for SR-07/08 and HQ for SR-09/10. Every existing Alpha cluster is two HPE Integrity servers (active/active) with dual Brocade Fibre Channel switches and shared HPE storage.
 
 ## Replacement matrix
 
@@ -14,10 +14,10 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 | SR-04 | HQGIPSDPSFSP2 | PROD | HQ | ALPHA3 | N3B | 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3) (cluster alias alpha3.gpo.gov) | Direct physical replacement |
 | SR-05 | IMGIPSDPSFSD1 | DR | IM | ALPHA6 | N6A | alpha6.gpo.gov: 172.19.128.41–.44; N6A observed connecting from .41 and .43 | Direct physical replacement |
 | SR-06 | IMGIPSDPSFSD2 | DR | IM | ALPHA6 | N6B | alpha6.gpo.gov: 172.19.128.41–.44; node split to be confirmed | Direct physical replacement |
-| SR-07 | IMGIPSDPSFSC1 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
-| SR-08 | IMGIPSDPSFSC2 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA12 | alpha12.gpo.gov: 172.23.5.44, 172.23.5.45 | Direct physical COOP replacement |
-| SR-09 | IMGIPSDPSFSC3 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13A (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
-| SR-10 | IMGIPSDPSFSC4 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13B (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
+| SR-07 | IMGIPSDPSFSC1 | COOP | IM | ALPHA10 | ALPH11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
+| SR-08 | IMGIPSDPSFSC2 | COOP | IM | ALPHA10 | ALPH12 | alpha12.gpo.gov: 172.23.5.44, 172.23.5.45 | Direct physical COOP replacement |
+| SR-09 | HQGIPSDPSFSC3 | COOP | HQ | ALPHA13 | N13A | IE2 172.23.6.42; IE4 172.23.6.43; /25 | Direct physical COOP replacement |
+| SR-10 | HQGIPSDPSFSC4 | COOP | HQ | ALPHA13 | N13B | IE2 172.23.6.44; IE4 172.23.6.45; /25 | Direct physical COOP replacement |
 
 ## Existing Alpha estate (hardware inventory)
 
@@ -29,7 +29,7 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 | ALPHA13 | COOP, DCIAC03 | HPE Integrity i6, 2 nodes | HPE Primera, 21.4 TB | DCIAC03 | SR-09, SR-10 (physical) |
 | ALPHA0 | Development | HPE Integrity i2, 2 nodes (alpha1, alpha2) | HPE 3PAR, 14.4 TB | IMDC | GDPS DEV virtual-server design (not in this request set) |
 
-Controlled recovery replication is PROD -> DR, PROD -> COOP DCIAC02, and PROD -> COOP DCIAC03. DEV/ALPHA0 is not treated as a production recovery target in this acquisition baseline.
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 Physical count: 5 clusters × 2 nodes = 10 existing Integrity nodes. ALPHA0 moves to virtual servers, so 8 existing nodes are replaced physically, plus 2 new TEST nodes = **10 physical GDPS server requests**.
 
@@ -90,8 +90,8 @@ ALPHA3 is the sizing standard for all replacement environments.
 | SR-01, SR-02 | TEST | 14.4 TB usable minimum | ST-01 |
 | SR-03, SR-04 | PROD | 14.4 TB usable minimum (ALPHA3 3PAR) | ST-02 |
 | SR-05, SR-06 | DR | 14.4 TB usable minimum (ALPHA6 3PAR) | ST-03 |
-| SR-07, SR-08 | COOP DCIAC02 | 14.4 TB usable minimum (ALPHA10 3PAR) | ST-04 |
-| SR-09, SR-10 | COOP DCIAC03 | 21.4 TB usable minimum (ALPHA13 Primera) | ST-05 |
+| SR-07, SR-08 | COOP IM | 14.4 TB usable minimum (ALPHA10 3PAR) | ST-04 |
+| SR-09, SR-10 | COOP HQ | 21.4 TB usable minimum (ALPHA13 Primera) | ST-05 |
 
 ## Network traceability note
 
@@ -143,9 +143,9 @@ alpha20.gpo.gov    NOT FOUND
 - TEST: HQ
 - PROD: HQ
 - DR: IM
-- COOP: DCIAC / Data Center in a Crate (DCIAC02 for ALPHA10 replacements, DCIAC03 for ALPHA13 replacements)
+- COOP: IM for SR-07/08 (ALPHA10 replacement); HQ for SR-09/10 (ALPHA13 replacement).
 
-COOP remains the DCIAC / CRATE recovery environment and is not treated as an ordinary IM server deployment merely because the GDPS COOP hostnames use the IM site prefix.
+The two DCIAC replacement pairs retain the COOP role. Their selected new sites are IM for SR-07/08 and HQ for SR-09/10; these are destination decisions, not inferred legacy locations.
 
 ## Patching rule
 
@@ -155,5 +155,5 @@ COOP remains the DCIAC / CRATE recovery environment and is not treated as an ord
 
 ## Version history
 
-- **v8:** all ten tickets made consistent: N3A addresses derived from the confirmed N3B split; ALPHA6 N6A observations recorded; SR-09/SR-10 placed at DCIAC03 with the HPE Primera 21.4 TB baseline; every node in its own non-overlapping patch window, with DR and COOP never sharing the PROD window; active/active and dual-fabric requirements stated; File Share Witness on a third system; 128 GB memory flagged for ISB approval; DR/COOP replication from PROD stated; hardware inventory, Alpha7/Alpha8 scope note, and ALPHA3 SAN baseline added.
+- **v8:** all ten tickets made consistent: N3A addresses derived from the confirmed N3B split; ALPHA6 N6A observations recorded; SR-09/SR-10 placed at DCIAC03 with the HPE Primera 21.4 TB baseline; every node in its own non-overlapping patch window, with DR and COOP never sharing the PROD window; active/active and dual-fabric requirements stated; File Share Witness on a third system; 128 GB memory flagged for ISB approval; COOP replication design assigned to GPO network engineers; hardware inventory, Alpha7/Alpha8 scope note, and ALPHA3 SAN baseline added.
 - **v7:** previous controlled set.

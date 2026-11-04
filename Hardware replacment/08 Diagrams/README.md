@@ -10,8 +10,8 @@ The figure set must represent:
 2. Complete GDPS Enterprise Network Topology
 3. GDPS TEST Network
 4. GDPS PROD and DR Network
-5. GDPS COOP DCIAC02 Recovery Network
-6. GDPS COOP DCIAC03 Recovery Network
+5. GDPS COOP IM Recovery Network
+6. GDPS COOP HQ Recovery Network
 7. SMB Namespace Migration and Cutover
 
 ## Storage figure set - v3 Minimum Capacity
@@ -21,7 +21,7 @@ The figure set must represent:
 1. GDPS System Environment - Storage Roles
 2. GDPS Storage Topology
 3. GDPS Storage Architecture and LUN Configuration
-4. Separate COOP storage targets: DCIAC02 >=14.4 TB and DCIAC03 >=21.4 TB
+4. Separate COOP storage targets: IM >=14.4 TB and HQ >=21.4 TB
 
 ## Diagram controls
 

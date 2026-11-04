@@ -2,7 +2,7 @@
 
 ## Scope
 
-Defines the network placement and source-network traceability for DEV, TEST, PROD, DR, COOP DCIAC02, and COOP DCIAC03.
+Defines the network placement and source-network traceability for DEV, TEST, PROD, DR, COOP IM, and COOP HQ.
 
 ## Environment placement
 
@@ -12,14 +12,14 @@ Defines the network placement and source-network traceability for DEV, TEST, PRO
 | TEST | HQ | New environment |
 | PROD | HQ | ALPHA3 at HQ |
 | DR | IM | ALPHA6 at IM |
-| COOP DCIAC02 | DCIAC02 / CRATE | ALPHA10 |
-| COOP DCIAC03 | DCIAC03 / CRATE | ALPHA13 |
+| COOP IM | IM | ALPHA10 |
+| COOP HQ | HQ | ALPHA13 |
 
 ## Design rules
 
 - TEST and PROD are not stretched clusters.
 - DR is a separate two-node recovery cluster at IM.
-- COOP consists of **two separate two-node recovery clusters**: DCIAC02 and DCIAC03.
+- COOP consists of **two separate two-node DCIAC replacement clusters**: IM (ALPHA10 source) and HQ (ALPHA13 source), plus the separate ALPHA6 recovery pair at IM.
 - Exact new GDPS VLAN IDs, IP assignments, gateways, firewall rule IDs, and switch ports remain Network/Security assignments.
 - Existing Alpha addresses below are source-system traceability and are not automatic GDPS address reservations.
 - One physical Alpha node may expose multiple node/service addresses; one-for-one physical replacement does not mean one-IP-for-one-IP.
@@ -42,16 +42,18 @@ N3B addresses were confirmed from the source node. N3A uses the remaining two ad
 - Subnet: **/24**
 - N6A has been observed using .41 and .43; final per-node split should be confirmed on the source nodes before address reuse/cutover decisions.
 
-### ALPHA10 / COOP DCIAC02 source
+### ALPHA10 / COOP IM source
 
-- ALPHA11: **172.23.5.42, 172.23.5.43**
-- ALPHA12: **172.23.5.44, 172.23.5.45**
+- ALPH11: **172.23.5.42, 172.23.5.43**
+- ALPH12: **172.23.5.44, 172.23.5.45**
 - Cluster/service name: `alpha10.gpo.gov`
 
-### ALPHA13 / COOP DCIAC03 source
+### ALPHA13 / COOP HQ source
 
 - Cluster/service DNS set: **172.23.6.42, .43, .44, .45**
-- Individual source-node names and address split remain to be confirmed from ALPHA13.
+- N13A: IE2 **172.23.6.42**, IE4 **172.23.6.43**.
+- N13B: IE2 **172.23.6.44**, IE4 **172.23.6.45**.
+- Both nodes: **255.255.255.128 (/25)**. `alpha13.gpo.gov` resolved to N13B IE4, **172.23.6.45**. Membership and interfaces confirmed from the source systems.
 
 ### ALPHA0 / DEV source
 
@@ -61,13 +63,13 @@ N3B addresses were confirmed from the source node. N3A uses the remaining two ad
 
 ## Storage network
 
-TEST, PROD, DR, COOP DCIAC02, and COOP DCIAC03 each require redundant Fibre Channel connectivity independent of normal SMB/client-access networking.
+TEST, PROD, DR, COOP IM, and COOP HQ each require redundant Fibre Channel connectivity independent of normal SMB/client-access networking.
 
 - ST-01 TEST: 14.4 TB minimum
 - ST-02 PROD: 14.4 TB minimum
 - ST-03 DR: 14.4 TB minimum
-- ST-04 COOP DCIAC02: 14.4 TB minimum
-- ST-05 COOP DCIAC03: 21.4 TB minimum
+- ST-04 COOP IM: 14.4 TB minimum
+- ST-05 COOP HQ: 21.4 TB minimum
 
 ## Availability and maintenance boundary
 

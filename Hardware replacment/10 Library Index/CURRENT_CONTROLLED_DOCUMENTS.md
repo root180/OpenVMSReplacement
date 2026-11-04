@@ -4,7 +4,7 @@
 |---|---|---|
 | 02 New Acquisition | GDPS_Hardware_Master_v4.3.md | v4.3 — synchronized to 10 physical servers |
 | 02 New Acquisition | GDPS_Hardware_Acquisition_SOW_CDWG_v1.9.md | v1.9 — synchronized to 10 physical servers |
-| 02 New Acquisition | GDPS_CDWG_Costing_and_Acquisition_List_v11.md | v11 — 8-server subtotal superseded |
+| 02 New Acquisition | GDPS_CDWG_Costing_and_Acquisition_List_v11.md | v11 — ten-server acquisition baseline |
 | 02 New Acquisition | GDPS_Memory_RAM_Requirement_Justification_v1.0.md | v1.0 — 128 GB per physical node justification |
 | 03 Storage | GDPS_Storage_Architecture_and_LUN_Design_v1.1.md | v1.1 — current Alpha3 baseline |
 | 03 Storage / Storage Requests | ST-01 through ST-05 | Five controlled storage requests |
@@ -21,8 +21,8 @@
 - TEST: 2
 - PROD: 2
 - DR: 2
-- COOP DCIAC02: 2
-- COOP DCIAC03: 2
+- COOP IM: 2
+- COOP HQ: 2
 - **Total physical servers: 10**
 
 DEV is a separate virtual-server replacement and is not part of the physical acquisition count.
@@ -32,8 +32,8 @@ DEV is a separate virtual-server replacement and is not part of the physical acq
 - ST-01 TEST: >=14.4 TB
 - ST-02 PROD: >=14.4 TB
 - ST-03 DR: >=14.4 TB
-- ST-04 COOP DCIAC02: >=14.4 TB
-- ST-05 COOP DCIAC03: >=21.4 TB
+- ST-04 COOP IM: >=14.4 TB
+- ST-05 COOP HQ: >=21.4 TB
 - current RAIDSET00-RAIDSET09 used baseline: ≈1,290 GB
 - controlled mapped minimum: >=2,050 GB
 - LUN01 minimum: >=600 GB
@@ -62,4 +62,4 @@ Every physical node:
 
 ## Implementation rule
 
-Only the current versions and baselines identified above are current for procurement and implementation. Older generated versions belong in revision history and must not be used to submit new server/storage requests.
+Use the versions and baselines identified above for procurement, implementation, and new server/storage requests.

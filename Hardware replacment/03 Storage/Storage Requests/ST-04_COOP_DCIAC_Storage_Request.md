@@ -1,16 +1,16 @@
-# ST-04 - GDPS COOP / DCIAC02 Storage Request
+# ST-04 - GDPS COOP / IM Storage Request
 
 ## Request
 
 - System: GDPS
 - Environment: COOP
-- Location: DCIAC02 / Data Center in a Crate
+- Location: IM
 - Connected nodes: IMGIPSDPSFSC1, IMGIPSDPSFSC2
-- Replaces: ALPHA10 / ALPHA11 + ALPHA12
+- Replaces: ALPHA10 / ALPH11 + ALPH12
 - Storage platform parity: HPE 3PAR
 - Minimum usable capacity: **>= 14.4 TB**
 - Connectivity: redundant Fibre Channel fabrics + Windows MPIO
-- Purpose: shared enterprise recovery storage for the two-node GDPS COOP DCIAC02 cluster.
+- Purpose: shared enterprise recovery storage for the two-node GDPS COOP IM cluster.
 
 ## LUN minimums
 
@@ -46,7 +46,7 @@ Together they represent approximately **2.3 TB allocated and 128 GB used**. Each
 
 ## Replication
 
-Configure DCIAC02 as an independent PROD recovery-replication target.
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Engineering requirements
 
@@ -57,7 +57,7 @@ Configure DCIAC02 as an independent PROD recovery-replication target.
 - controller/protection policy
 - replication licensing and technology
 - monitoring and support
-- DCIAC02 crate integration
+- IM integration for the ALPHA10 replacement pair
 - independent File Share Witness on a third system, not on clustered data storage
 - COOP patching/maintenance must not overlap PROD maintenance
 

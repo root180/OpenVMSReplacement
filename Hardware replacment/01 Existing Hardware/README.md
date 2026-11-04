@@ -8,7 +8,7 @@ This folder retains source Alpha/OpenVMS hardware evidence used for GDPS replace
 - ALPHA3 PROD — HPE Integrity i6 two-node cluster at HQ; HPE 3PAR 14.4 TB
 - ALPHA6 DR — HPE Integrity i6 two-node cluster at IM; HPE 3PAR 14.4 TB
 - ALPHA10 COOP / DCIAC02 — HPE Integrity i6 two-node cluster; HPE 3PAR 14.4 TB
-- ALPHA13 COOP / DCIAC03 — HPE Integrity i6 two-node cluster; HPE Primera 21.4 TB; individual source node names pending confirmation
+- ALPHA13 COOP / DCIAC03 — HPE Integrity i6 two-node cluster; HPE Primera 21.4 TB; N13A and N13B confirmed by SHOW CLUSTER
 
 Primary evidence includes:
 
@@ -29,3 +29,4 @@ Current procurement authority is under:
 - `05 Cluster and SMB/`
 - `07 Server Requests/v8 10-Node Physical Server Tickets/`
 - `10 Library Index/CURRENT_CONTROLLED_DOCUMENTS.md`
+

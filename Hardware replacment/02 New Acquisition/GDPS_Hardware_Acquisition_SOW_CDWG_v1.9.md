@@ -10,8 +10,8 @@ Provide an engineered bill of materials and implementation-ready hardware config
 - 2 TEST nodes at HQ
 - 2 PROD nodes at HQ
 - 2 DR nodes at IM
-- 2 COOP nodes at DCIAC02
-- 2 COOP nodes at DCIAC03
+- 2 COOP nodes at IM
+- 2 COOP nodes at HQ
 - minimum 128 GB RAM per node
 - per-node native/local storage: **C:\ 200 GB + D:\ 300 GB = 500 GB usable, hardware RAID 1 mirrored**
 - redundant Fibre Channel HBAs per node
@@ -30,8 +30,8 @@ HPE is the preferred enterprise storage vendor based on current GPO storage line
 | TEST / HQ | ST-01 | 14.4 TB | Production-equivalent |
 | PROD / HQ | ST-02 | 14.4 TB | ALPHA3 3PAR |
 | DR / IM | ST-03 | 14.4 TB | ALPHA6 3PAR |
-| COOP / DCIAC02 | ST-04 | 14.4 TB | ALPHA10 3PAR |
-| COOP / DCIAC03 | ST-05 | 21.4 TB | ALPHA13 Primera |
+| COOP / IM | ST-04 | 14.4 TB | ALPHA10 3PAR |
+| COOP / HQ | ST-05 | 21.4 TB | ALPHA13 Primera |
 
 ## Native/local disk requirement
 
@@ -70,13 +70,7 @@ ALPHA3SYS is not a shared-data carry-forward LUN because its system role moves t
 
 ## Replication
 
-The solution shall support:
-
-- PROD -> DR
-- PROD -> COOP DCIAC02
-- PROD -> COOP DCIAC03
-
-DR and both COOP targets must remain independently recoverable.
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Vendor response requirements
 
@@ -86,13 +80,13 @@ CDW-G/HPE shall identify:
 - local RAID/controller configuration supporting C:\ 200 GB and D:\ 300 GB usable
 - exact HPE storage model for each environment/site
 - controller and array protection policy
-- FC switch/fabric requirements including DCIAC03
+- FC switch/fabric requirements including the HQ COOP replacement pair
 - HBA count and models for all 10 nodes
 - optics and cabling
 - MPIO requirements
 - replication technology and licensing
 - support and professional services
-- crate integration for DCIAC02 and DCIAC03
+- site integration for IM COOP and HQ COOP
 - recommended replacement LUN sizing, including growth headroom for RAIDSET01
 - disposition mapping for the nine additional ALPHA3 source volumes
 

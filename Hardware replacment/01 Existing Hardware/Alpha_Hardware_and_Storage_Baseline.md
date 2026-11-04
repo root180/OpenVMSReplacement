@@ -11,8 +11,8 @@ This document records the verified Alpha/OpenVMS hardware, network, and storage 
 | ALPHA0 | DEV | ALPHA1, ALPHA2 | HPE Integrity i2 | **IMDC** | HPE 3PAR, 14.4 TB class |
 | ALPHA3 | PROD | N3A, N3B | HPE Integrity i6 | HQ | HPE 3PAR, 14.4 TB |
 | ALPHA6 | Production Backup / DR | N6A, N6B | HPE Integrity i6 | IM | HPE 3PAR, 14.4 TB |
-| ALPHA10 | COOP / DCIAC02 | ALPHA11, ALPHA12 | HPE Integrity i6 | DCIAC02 | HPE 3PAR, 14.4 TB |
-| ALPHA13 | COOP / DCIAC03 | two physical nodes; individual node names pending confirmation | HPE Integrity i6 | DCIAC03 | HPE Primera, 21.4 TB |
+| ALPHA10 | COOP / DCIAC02 | ALPH11, ALPH12 | HPE Integrity i6 | DCIAC02 | HPE 3PAR, 14.4 TB |
+| ALPHA13 | COOP / DCIAC03 | N13A, N13B | HPE Integrity i6 | DCIAC03 | HPE Primera, 21.4 TB |
 
 ALPHA0 is replaced separately by the GDPS DEV virtual-server design and is not part of the 10 physical-server request set.
 
@@ -38,7 +38,7 @@ Controlled GDPS native/local standard per physical node: **C:\ 200 GB + D:\ 300 
 
 ## Current ALPHA3 RAIDSET usage
 
-The older August 2025 1,205 GB used baseline is superseded by current production measurements.
+Current production measurements are the sizing baseline.
 
 | Source volume | Current used | Source allocation |
 |---|---:|---:|
@@ -81,7 +81,7 @@ The CIFS volumes require specific disposition review against native Windows SMB.
 - ALPHA3 / N3B: 172.16.35.19 (IE2 primary), .20 (IE3)
 - ALPHA3 subnet mask: 255.255.255.0 (/24)
 - ALPHA6 cluster DNS set: 172.19.128.41-.44
-- ALPHA10: ALPHA11 .42/.43; ALPHA12 .44/.45 on 172.23.5.x
+- ALPHA10: ALPH11 .42/.43; ALPH12 .44/.45 on 172.23.5.x
 - ALPHA13 cluster DNS set: 172.23.6.42-.45; node split pending confirmation
 
 ## Replacement rule

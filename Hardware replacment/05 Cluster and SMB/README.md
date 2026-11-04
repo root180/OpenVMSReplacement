@@ -6,7 +6,7 @@ Current controlled artifact:
 
 Track:
 
-- five separate two-node WSFC clusters: TEST, PROD, DR, COOP DCIAC02, COOP DCIAC03
+- five separate two-node WSFC clusters: TEST, PROD, DR, COOP IM, COOP HQ
 - 10 physical WSFC nodes total
 - independent File Share Witness on a third system for each cluster
 - HPE shared storage presented through redundant FC paths

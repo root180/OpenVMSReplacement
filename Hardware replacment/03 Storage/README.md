@@ -9,17 +9,15 @@ Current controlled storage artifact:
 - TEST / ST-01: >= 14.4 TB usable
 - PROD / ST-02: >= 14.4 TB usable
 - DR / ST-03: >= 14.4 TB usable
-- COOP DCIAC02 / ST-04: >= 14.4 TB usable
-- COOP DCIAC03 / ST-05: >= 21.4 TB usable
+- COOP IM / ST-04: >= 14.4 TB usable
+- COOP HQ / ST-05: >= 21.4 TB usable
 - DEV: existing GPO Enterprise NAS, >= 2 TB allocation
 
 All physical storage environments require redundant Fibre Channel fabrics and Windows MPIO.
 
 ## Replication
 
-- PROD -> DR
-- PROD -> COOP DCIAC02
-- PROD -> COOP DCIAC03
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## LUN rule
 

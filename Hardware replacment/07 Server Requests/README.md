@@ -17,8 +17,8 @@ That folder contains:
 - TEST: 2 new physical nodes
 - PROD: 2 replacement physical nodes
 - DR: 2 replacement physical nodes
-- COOP DCIAC02: 2 replacement physical nodes
-- COOP DCIAC03: 2 replacement physical nodes
+- COOP IM: 2 replacement physical nodes
+- COOP HQ: 2 replacement physical nodes
 - **Total: 10 physical GDPS servers**
 
 ## Replacement rule
@@ -33,11 +33,11 @@ DR replaces ALPHA6:
 - N6A
 - N6B
 
-COOP DCIAC02 replaces ALPHA10:
-- ALPHA11
-- ALPHA12
+COOP IM replaces ALPHA10:
+- ALPH11
+- ALPH12
 
-COOP DCIAC03 replaces the two physical ALPHA13 nodes. Individual source-node names remain to be confirmed from ALPHA13 before final traceability is closed.
+COOP HQ replaces N13A and N13B, the two confirmed physical ALPHA13 nodes.
 
 ALPHA0 is handled separately by the DEV virtualization design and is not part of this physical-server request set.
 

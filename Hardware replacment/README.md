@@ -9,8 +9,8 @@ This folder is the controlled repository for GDPS hardware replacement architect
 - TEST: 2 nodes at HQ
 - PROD: 2 nodes at HQ
 - DR: 2 nodes at IM
-- COOP DCIAC02: 2 nodes
-- COOP DCIAC03: 2 nodes
+- COOP IM: 2 nodes
+- COOP HQ: 2 nodes
 - DEV: separate virtual-server replacement
 
 ## Per-node native storage
@@ -28,8 +28,8 @@ Every physical node:
 - ST-01 TEST >=14.4 TB
 - ST-02 PROD >=14.4 TB
 - ST-03 DR >=14.4 TB
-- ST-04 COOP DCIAC02 >=14.4 TB
-- ST-05 COOP DCIAC03 >=21.4 TB
+- ST-04 COOP IM >=14.4 TB
+- ST-05 COOP HQ >=21.4 TB
 
 Current RAIDSET00-RAIDSET09 used baseline is approximately 1,290 GB. Controlled mapped minimum is >=2,050 GB, including LUN01 >=600 GB. Nine additional ALPHA3 source volumes require explicit disposition.
 

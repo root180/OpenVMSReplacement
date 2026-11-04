@@ -2,7 +2,7 @@
 
 ## Storage platform
 
-GDPS TEST, PROD, DR, COOP DCIAC02, and COOP DCIAC03 use HPE enterprise storage supported for Windows Server and WSFC. Exact HPE replacement model remains subject to HPE/CDW-G engineering validation.
+GDPS TEST, PROD, DR, COOP IM, and COOP HQ use HPE enterprise storage supported for Windows Server and WSFC. Exact HPE replacement model remains subject to HPE/CDW-G engineering validation.
 
 DEV remains on the existing GPO Enterprise NAS.
 
@@ -14,8 +14,8 @@ DEV remains on the existing GPO Enterprise NAS.
 | TEST / HQ | ST-01 | 14.4 TB | Production-equivalent |
 | PROD / HQ | ST-02 | 14.4 TB | ALPHA3 HPE 3PAR |
 | DR / IM | ST-03 | 14.4 TB | ALPHA6 HPE 3PAR |
-| COOP / DCIAC02 | ST-04 | 14.4 TB | ALPHA10 HPE 3PAR |
-| COOP / DCIAC03 | ST-05 | 21.4 TB | ALPHA13 HPE Primera |
+| COOP / IM | ST-04 | 14.4 TB | ALPHA10 HPE 3PAR |
+| COOP / HQ | ST-05 | 21.4 TB | ALPHA13 HPE Primera |
 
 ## Native/local Windows storage
 
@@ -32,7 +32,7 @@ Shared clustered business data remains on SAN.
 
 ## GDPS mapped LUN baseline
 
-Current values were measured from ALPHA3 production. The older August 2025 1,205 GB used baseline is superseded.
+Current values were measured from ALPHA3 production.
 
 | GDPS LUN | Minimum allocated capacity | Current used baseline | Source mapping |
 |---|---:|---:|---|
@@ -85,9 +85,7 @@ Each controlled GDPS LUN shall be provisioned at or above its minimum. Larger al
 
 ## Replication
 
-- PROD -> DR
-- PROD -> COOP DCIAC02
-- PROD -> COOP DCIAC03
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Naming rule
 

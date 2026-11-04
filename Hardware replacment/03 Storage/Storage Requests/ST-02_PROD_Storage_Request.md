@@ -46,11 +46,7 @@ Together they represent approximately **2.3 TB allocated and 128 GB used**. Each
 
 ## Replication
 
-PROD is the authoritative replication source to:
-
-- ST-03 / DR
-- ST-04 / COOP DCIAC02
-- ST-05 / COOP DCIAC03
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Engineering requirements
 

@@ -22,8 +22,8 @@ The physical deployment follows the existing Alpha setup. This is a technology r
 | SR-04 | HQGIPSDPSFSP2 | PROD | HQ | N3B — ALPHA3 |
 | SR-05 | IMGIPSDPSFSD1 | DR | IM | N6A — ALPHA6 |
 | SR-06 | IMGIPSDPSFSD2 | DR | IM | N6B — ALPHA6 |
-| SR-07 | IMGIPSDPSFSC1 | COOP | DCIAC02 / CRATE | ALPHA11 — ALPHA10 |
-| SR-08 | IMGIPSDPSFSC2 | COOP | DCIAC02 / CRATE | ALPHA12 — ALPHA10 |
+| SR-07 | IMGIPSDPSFSC1 | COOP | IM | ALPH11 — ALPHA10 |
+| SR-08 | IMGIPSDPSFSC2 | COOP | IM | ALPH12 — ALPHA10 |
 | SR-09 | HQGIPSDPSFSC3 | COOP | HQ | N13A — ALPHA13 / DCIAC03 |
 | SR-10 | HQGIPSDPSFSC4 | COOP | HQ | N13B — ALPHA13 / DCIAC03 |
 
@@ -71,11 +71,11 @@ Every ticket follows the live form order, includes a clear environment-specific 
 
 ## Changes in v8
 
-This folder supersedes **v7 10-Node Physical Server Tickets**. All ten tickets now use one consistent template:
+All ten tickets use one consistent template:
 
 - **Patching:** Mondays only, with separate non-overlapping windows for peer nodes; DR and COOP must not overlap PROD. Exact catalog group, week and time are confirmed with IT.
 - **Traceability:** N3A (172.16.35.15, .16) derived from the confirmed N3B split; N6A observed on .41 and .43; ALPHA13 node names and split marked for confirmation.
-- **Storage:** 14.4 TB baseline for TEST, PROD, DR and DCIAC02 (3PAR parity); **21.4 TB for DCIAC03** (Primera parity); DR and COOP replication from PROD stated.
+- **Storage:** 14.4 TB baseline for TEST, PROD, DR and DCIAC02 (3PAR parity); **21.4 TB for DCIAC03** (Primera parity); COOP replication design is assigned to GPO network engineers.
 - **Cluster:** active/active, dual independent fabrics, File Share Witness on a third system.
 - **Memory:** 128 GB RAM minimum is explicitly stated in Purpose and Special Requirements. The dropdown selects the applicable catalog approval category.
 - **Native storage:** C:\ 200 GB + D:\ 300 GB, 500 GB usable, hardware RAID 1, justified one-to-one against ALPHA3.
@@ -85,5 +85,5 @@ This folder supersedes **v7 10-Node Physical Server Tickets**. All ten tickets n
 - ST-01 — TEST / HQ — >=14.4 TB
 - ST-02 — PROD / HQ — >=14.4 TB
 - ST-03 — DR / IM — >=14.4 TB
-- ST-04 — COOP DCIAC02 — >=14.4 TB
-- ST-05 — COOP DCIAC03 — >=21.4 TB
+- ST-04 — COOP IM — >=14.4 TB
+- ST-05 — COOP HQ — >=21.4 TB

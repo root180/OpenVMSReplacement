@@ -1,16 +1,16 @@
-# ST-05 - GDPS COOP / DCIAC03 Storage Request
+# ST-05 - GDPS COOP / HQ Storage Request
 
 ## Request
 
 - System: GDPS
 - Environment: COOP
-- Location: DCIAC03 / Data Center in a Crate
-- Connected nodes: IMGIPSDPSFSC3, IMGIPSDPSFSC4
+- Location: HQ
+- Connected nodes: HQGIPSDPSFSC3, HQGIPSDPSFSC4
 - Replaces: ALPHA13 two-node COOP cluster
 - Storage platform parity: HPE Primera
 - Minimum usable capacity: **>= 21.4 TB**
 - Connectivity: redundant Fibre Channel fabrics + Windows MPIO
-- Purpose: shared enterprise recovery storage for the two-node GDPS COOP DCIAC03 cluster.
+- Purpose: shared enterprise recovery storage for the two-node GDPS COOP HQ cluster.
 
 ## LUN minimums
 
@@ -46,7 +46,7 @@ Together they represent approximately **2.3 TB allocated and 128 GB used**. Each
 
 ## Replication
 
-Configure DCIAC03 as an independent PROD recovery-replication target.
+COOP replication sources, targets, direction, topology, technology, and schedule are to be determined by GPO network engineers.
 
 ## Engineering requirements
 
@@ -57,7 +57,7 @@ Configure DCIAC03 as an independent PROD recovery-replication target.
 - controller/protection policy
 - replication licensing and technology
 - monitoring and support
-- DCIAC03 crate integration
+- HQ integration for the ALPHA13 replacement pair
 - independent File Share Witness on a third system, not on clustered data storage
 - COOP patching/maintenance must not overlap PROD maintenance
 
