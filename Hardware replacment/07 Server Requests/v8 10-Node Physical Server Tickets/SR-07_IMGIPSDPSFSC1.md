@@ -2,27 +2,55 @@
 
 ## ServiceNow New Server Request
 
-| Field | Required value |
-|---|---|
-| Platform | Physical Server |
-| Business Unit | GOVERNMENT INTEGRATED PRINT SERVICES |
-| System Environment | COOP |
-| Data Center | DCIAC (Data Center in a Crate) |
-| OS | Windows Server 2025 |
-| Data Drive Requirements | C:\ = 200 GB. D:\ = 300 GB. |
-| Native / Local Storage Requirement | C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage. |
-| Memory | 128 GB minimum. See `GDPS_Memory_RAM_Requirement_Justification_v1.0.md` for the GPO system-owner engineering justification covering SR-01 through SR-10. |
-| Server Network | Server Distribution |
-| Purpose | GDPS COOP / DCIAC02 physical recovery cluster node 1 replacing ALPHA11. Requested hostname: IMGIPSDPSFSC1. |
-| Existing Server Being Replaced | ALPHA11 - ALPHA10 / DCIAC02 COOP Cluster node (HPE Integrity i6; HPE 3PAR storage). |
-| Existing Alpha DNS / IP Traceability | alpha11.gpo.gov - 172.23.5.42, 172.23.5.43 |
-| RDP Access | Matthew Taylor |
-| Patching Group | COOP node 1: approved COOP patch group/window that does not overlap SR-08 or either PROD node. Select the exact catalog label in ServiceNow before submission. |
-| Affinity Rule | N/A / None — physical server |
-| Description | IMGIPSDPSFSC1 — GDPS COOP / DCIAC02 physical recovery cluster node 1 replacing ALPHA11, paired with IMGIPSDPSFSC2 (SR-08). |
-| Watchlist | Muyiwa Aniyikaye |
+Fields below follow the order of the ServiceNow form. Copy each value into its matching field.
 
-## Special Requirements
+### What is the platform for this Request?
+
+Physical Server
+
+### What Business Unit will this server support?
+
+GOVERNMENT INTEGRATED PRINT SERVICES
+
+### Please select system environment for this request:
+
+COOP
+
+### Data center where server will be located:
+
+DCIAC (Data Center in a Crate)
+
+### Choose OS type for server:
+
+Windows Server 2025
+
+### DATA DRIVE REQUIREMENTS:
+
+C:\ = 200 GB; D:\ = 300 GB. Total 500 GB usable native/local storage, hardware RAID 1. Shared business data resides on separately provisioned SAN storage.
+
+### Memory Requirements: Select the amount of memory needed:
+
+Select the approval-required memory option available in the catalog. The requested quantity is 128 GB RAM minimum, stated in Purpose and Special Requirements.
+
+### Select the server network:
+
+Server Distribution
+
+### Please list the purpose for this Server as well as what service the Server will support?
+
+GDPS COOP / DCIAC02 physical recovery cluster node 1 replacing ALPHA11 in the existing ALPHA10 COOP cluster. Provides recovery file services and clustered access to shared SAN storage receiving PROD replication in the Data Center in a Crate (CRATE). Operates as an active/active pair with IMGIPSDPSFSC2 (SR-08) to preserve the existing Alpha COOP capability and node-failover behavior. Requested hostname: IMGIPSDPSFSC1. Required memory: 128 GB RAM minimum.
+
+### If this request is to replace an existing server, please list the name of the server being replaced. Please note to enter N/A if not replacing existing server.
+
+ALPHA11 - ALPHA10 / DCIAC02 COOP Cluster node (HPE Integrity i6; HPE 3PAR storage).
+
+### Please add Active Directory Users that will need RDP Access to the Server.
+
+Matthew Taylor
+
+### List any special requirements that IT needs to be aware of regarding the Server request.
+
+Provision this physical server with a minimum of 128 GB RAM.
 
 Provision this request as a **physical server** with hostname **IMGIPSDPSFSC1**. This server is one member of the two-node GDPS COOP Windows Server Failover Cluster with peer node **IMGIPSDPSFSC2** (SR-08). Both nodes are active (active/active), matching the existing Alpha clusters. Provide minimum 128 GB RAM, native/local Windows storage with C:\ = 200 GB and D:\ = 300 GB (500 GB total, hardware RAID 1), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to two independent fabrics (as the dual Brocade fabrics on the Alpha clusters), Windows MPIO support, and shared HPE enterprise storage.
 
@@ -33,6 +61,28 @@ Use an independent File Share Witness for WSFC quorum. The witness must reside o
 Peer nodes must never be rebooted together. SR-07 and SR-08 must be in different, non-overlapping approved patch groups/windows, and this node must not share the PROD patching window.
 
 Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and other infrastructure values are assigned by the appropriate GPO infrastructure teams.
+
+Native / local storage requirement: C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage.
+
+Existing Alpha DNS / IP traceability: alpha11.gpo.gov - 172.23.5.42, 172.23.5.43
+
+Patching: Mondays only. Assign separate, non-overlapping approved Monday patch windows to peer nodes. DR and COOP windows must not overlap PROD. Select the exact Monday catalog group available in ServiceNow; IT must confirm the week and time. SR-07 must not overlap SR-08.
+
+### Please choose the patching group that best fits the schedule of the server.
+
+Mondays only. Assign separate, non-overlapping approved Monday patch windows to peer nodes. DR and COOP windows must not overlap PROD. Select the exact Monday catalog group available in ServiceNow; IT must confirm the week and time. SR-07 must not overlap SR-08.
+
+### If these VMs are to be a redundant or clustered pair, pick the Affinity rule for the VMs if needed.
+
+N/A / None — physical server
+
+### Description
+
+IMGIPSDPSFSC1 — GDPS COOP / DCIAC02 physical recovery cluster node 1 replacing ALPHA11, paired with IMGIPSDPSFSC2 (SR-08).
+
+### Watchlist
+
+Muyiwa Aniyikaye
 
 ## Replacement Control
 
