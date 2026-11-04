@@ -2,27 +2,55 @@
 
 ## ServiceNow New Server Request
 
-| Field | Required value |
-|---|---|
-| Platform | Physical Server |
-| Business Unit | GOVERNMENT INTEGRATED PRINT SERVICES |
-| System Environment | PROD |
-| Data Center | HQ |
-| OS | Windows Server 2025 |
-| Data Drive Requirements | C:\ = 200 GB. D:\ = 300 GB. |
-| Native / Local Storage Requirement | C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage. |
-| Memory | 128 GB minimum. See `GDPS_Memory_RAM_Requirement_Justification_v1.0.md` for the GPO system-owner engineering justification covering SR-01 through SR-10. |
-| Server Network | Server Distribution |
-| Purpose | GDPS PROD physical file/service cluster node 2 replacing N3B. Requested hostname: HQGIPSDPSFSP2. |
-| Existing Server Being Replaced | N3B - ALPHA3 Production Cluster node (HPE Integrity i6; HPE 3PAR storage). |
-| Existing Alpha DNS / IP Traceability | N3B: 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3), confirmed by TCPIP SHOW INTERFACE on N3B. Cluster alias alpha3.gpo.gov. |
-| RDP Access | Matthew Taylor |
-| Patching Group | PROD node 2: approved production patch group/window that does not overlap SR-03, DR, or COOP. A shared daytime 4th-Friday 11 am–2 pm window is not accepted for both PROD nodes. Select the exact catalog label in ServiceNow before submission. |
-| Affinity Rule | N/A / None — physical server |
-| Description | HQGIPSDPSFSP2 — GDPS PROD physical file/service cluster node 2 replacing N3B, paired with HQGIPSDPSFSP1 (SR-03). |
-| Watchlist | Muyiwa Aniyikaye |
+Fields below follow the order of the ServiceNow form. Copy each value into its matching field.
 
-## Special Requirements
+### What is the platform for this Request?
+
+Physical Server
+
+### What Business Unit will this server support?
+
+GOVERNMENT INTEGRATED PRINT SERVICES
+
+### Please select system environment for this request:
+
+PROD
+
+### Data center where server will be located:
+
+HQ
+
+### Choose OS type for server:
+
+Windows Server 2025
+
+### DATA DRIVE REQUIREMENTS:
+
+C:\ = 200 GB; D:\ = 300 GB. Total 500 GB usable native/local storage, hardware RAID 1. Shared business data resides on separately provisioned SAN storage.
+
+### Memory Requirements: Select the amount of memory needed:
+
+Select the approval-required memory option available in the catalog. The requested quantity is 128 GB RAM minimum, stated in Purpose and Special Requirements.
+
+### Select the server network:
+
+Server Distribution
+
+### Please list the purpose for this Server as well as what service the Server will support?
+
+GDPS PROD physical file/service cluster node 2 replacing N3B in the existing ALPHA3 production cluster. Hosts GDPS production file services and provides clustered access to shared SAN storage, operating as an active/active pair with HQGIPSDPSFSP1 (SR-03) to preserve the existing Alpha service availability and failover behavior. Requested hostname: HQGIPSDPSFSP2. Required memory: 128 GB RAM minimum.
+
+### If this request is to replace an existing server, please list the name of the server being replaced. Please note to enter N/A if not replacing existing server.
+
+N3B - ALPHA3 Production Cluster node (HPE Integrity i6; HPE 3PAR storage).
+
+### Please add Active Directory Users that will need RDP Access to the Server.
+
+Matthew Taylor
+
+### List any special requirements that IT needs to be aware of regarding the Server request.
+
+Provision this physical server with a minimum of 128 GB RAM.
 
 Provision this request as a **physical server** with hostname **HQGIPSDPSFSP2**. This server is one member of the two-node GDPS PROD Windows Server Failover Cluster with peer node **HQGIPSDPSFSP1** (SR-03). Both nodes are active (active/active), matching the existing Alpha clusters. Provide minimum 128 GB RAM, native/local Windows storage with C:\ = 200 GB and D:\ = 300 GB (500 GB total, hardware RAID 1), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to two independent fabrics (as the dual Brocade fabrics on the Alpha clusters), Windows MPIO support, and shared HPE enterprise storage.
 
@@ -33,6 +61,28 @@ Use an independent File Share Witness for WSFC quorum. The witness must reside o
 Peer nodes must never be rebooted together. SR-04 and SR-03 must be in different, non-overlapping approved patch groups/windows.
 
 Final IP, DNS, VLAN, firewall, Fibre Channel zoning, LUN masking, WWPN, and other infrastructure values are assigned by the appropriate GPO infrastructure teams.
+
+Native / local storage requirement: C:\ = 200 GB. D:\ = 300 GB. Total native/local storage = 500 GB usable, hardware RAID 1 (mirrored). Shared clustered business data remains on separately provisioned SAN storage.
+
+Existing Alpha DNS / IP traceability: N3B: 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3), confirmed by TCPIP SHOW INTERFACE on N3B. Cluster alias alpha3.gpo.gov.
+
+Patching: Mondays only. Assign separate, non-overlapping approved Monday patch windows to peer nodes. DR and COOP windows must not overlap PROD. Select the exact Monday catalog group available in ServiceNow; IT must confirm the week and time. SR-04 must not overlap SR-03.
+
+### Please choose the patching group that best fits the schedule of the server.
+
+Mondays only. Assign separate, non-overlapping approved Monday patch windows to peer nodes. DR and COOP windows must not overlap PROD. Select the exact Monday catalog group available in ServiceNow; IT must confirm the week and time. SR-04 must not overlap SR-03.
+
+### If these VMs are to be a redundant or clustered pair, pick the Affinity rule for the VMs if needed.
+
+N/A / None — physical server
+
+### Description
+
+HQGIPSDPSFSP2 — GDPS PROD physical file/service cluster node 2 replacing N3B, paired with HQGIPSDPSFSP1 (SR-03).
+
+### Watchlist
+
+Muyiwa Aniyikaye
 
 ## Replacement Control
 
