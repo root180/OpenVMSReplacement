@@ -24,9 +24,7 @@
 
 ## Special Requirements
 
-Provision this request as a **physical server** with hostname **HQGIPSDPSFST1**. The `VM` characters are part of the established GPO hostname convention for this GDPS server and do not indicate that the platform is virtual. Do not rename without an approved architecture change.
-
-This server is one member of the two-node GDPS TEST Windows Server Failover Cluster with peer node **HQGIPSDPSFST2** (SR-02). Both nodes are active (active/active), matching the existing Alpha clusters. Provide minimum 128 GB RAM, native/local Windows storage with C:\ = 200 GB and D:\ = 300 GB (500 GB total, hardware RAID 1), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to two independent fabrics (as the dual Brocade fabrics on the Alpha clusters), Windows MPIO support, and shared HPE enterprise storage.
+Provision this request as a **physical server** with hostname **HQGIPSDPSFST1**. This server is one member of the two-node GDPS TEST Windows Server Failover Cluster with peer node **HQGIPSDPSFST2** (SR-02). Both nodes are active (active/active), matching the existing Alpha clusters. Provide minimum 128 GB RAM, native/local Windows storage with C:\ = 200 GB and D:\ = 300 GB (500 GB total, hardware RAID 1), redundant hot-plug power, redundant Server Distribution network connectivity, redundant Fibre Channel HBA connectivity to two independent fabrics (as the dual Brocade fabrics on the Alpha clusters), Windows MPIO support, and shared HPE enterprise storage.
 
 TEST shared SAN storage baseline: **14.4 TB usable minimum** (parity with the ALPHA3 production HPE 3PAR array), with final LUN presentation per the controlled GDPS storage design and storage request ST-01.
 
