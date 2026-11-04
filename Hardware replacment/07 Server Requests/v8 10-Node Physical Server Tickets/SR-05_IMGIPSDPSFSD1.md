@@ -19,7 +19,7 @@
 | RDP Access | Matthew Taylor |
 | Patching Group | DR node 1: approved patch group/window that does not overlap SR-06 or the PROD window. Select the exact catalog label in ServiceNow before submission. |
 | Affinity Rule | N/A / None — physical server |
-| Description | IMGIPSDPSFSD1 — GDPS DR physical file/service cluster node 1 replacing N6A. |
+| Description | IMGIPSDPSFSD1 — GDPS DR physical file/service cluster node 1 replacing N6A, paired with IMGIPSDPSFSD2 (SR-06). |
 | Watchlist | Muyiwa Aniyikaye |
 
 ## Special Requirements
