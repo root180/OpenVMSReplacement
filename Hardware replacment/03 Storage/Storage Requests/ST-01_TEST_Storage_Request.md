@@ -5,7 +5,7 @@
 - System: GDPS
 - Environment: TEST
 - Location: HQ
-- Connected nodes: HQVMGDPSFST1, HQVMGDPSFST2
+- Connected nodes: HQGIPSDPSFST1, HQGIPSDPSFST2
 - Storage platform: HPE Enterprise Storage supported for Windows Server 2025 / WSFC; exact model TBD by HPE/CDW-G
 - Minimum usable capacity: **>= 14.4 TB**
 - Connectivity: redundant Fibre Channel fabrics + Windows MPIO
