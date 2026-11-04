@@ -5,7 +5,7 @@
 - System: GDPS
 - Environment: COOP
 - Location: DCIAC02 / Data Center in a Crate
-- Connected nodes: IMVMGDPSFSC1, IMVMGDPSFSC2
+- Connected nodes: IMGIPSDPSFSC1, IMGIPSDPSFSC2
 - Replaces: ALPHA10 / ALPHA11 + ALPHA12
 - Storage platform parity: HPE 3PAR
 - Minimum usable capacity: **>= 14.4 TB**
