@@ -8,16 +8,16 @@ The deployment follows the existing Alpha setup. TEST is the only new physical c
 
 | Ticket | New GDPS Node | Environment | New Node Location | Existing Alpha System | Existing Node Replaced | Existing Alpha DNS / IP Traceability | Replacement Status |
 |---|---|---|---|---|---|---|---|
-| SR-01 | HQVMGDPSFST1 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
-| SR-02 | HQVMGDPSFST2 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
-| SR-03 | HQVMGDPSFSP1 | PROD | HQ | ALPHA3 | N3A | 172.16.35.15, 172.16.35.16 (the alpha3 addresses not held by N3B); cluster alias alpha3.gpo.gov | Direct physical replacement |
-| SR-04 | HQVMGDPSFSP2 | PROD | HQ | ALPHA3 | N3B | 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3) (cluster alias alpha3.gpo.gov) | Direct physical replacement |
-| SR-05 | IMVMGDPSFSD1 | DR | IM | ALPHA6 | N6A | alpha6.gpo.gov: 172.19.128.41–.44; N6A observed connecting from .41 and .43 | Direct physical replacement |
-| SR-06 | IMVMGDPSFSD2 | DR | IM | ALPHA6 | N6B | alpha6.gpo.gov: 172.19.128.41–.44; node split to be confirmed | Direct physical replacement |
-| SR-07 | IMVMGDPSFSC1 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
-| SR-08 | IMVMGDPSFSC2 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA12 | alpha12.gpo.gov: 172.23.5.44, 172.23.5.45 | Direct physical COOP replacement |
-| SR-09 | IMVMGDPSFSC3 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13A (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
-| SR-10 | IMVMGDPSFSC4 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13B (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
+| SR-01 | HQGIPSDPSFST1 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
+| SR-02 | HQGIPSDPSFST2 | TEST | HQ | None | N/A | N/A | New TEST node; no existing Alpha replacement |
+| SR-03 | HQGIPSDPSFSP1 | PROD | HQ | ALPHA3 | N3A | 172.16.35.15, 172.16.35.16 (the alpha3 addresses not held by N3B); cluster alias alpha3.gpo.gov | Direct physical replacement |
+| SR-04 | HQGIPSDPSFSP2 | PROD | HQ | ALPHA3 | N3B | 172.16.35.19 (IE2, primary), 172.16.35.20 (IE3) (cluster alias alpha3.gpo.gov) | Direct physical replacement |
+| SR-05 | IMGIPSDPSFSD1 | DR | IM | ALPHA6 | N6A | alpha6.gpo.gov: 172.19.128.41–.44; N6A observed connecting from .41 and .43 | Direct physical replacement |
+| SR-06 | IMGIPSDPSFSD2 | DR | IM | ALPHA6 | N6B | alpha6.gpo.gov: 172.19.128.41–.44; node split to be confirmed | Direct physical replacement |
+| SR-07 | IMGIPSDPSFSC1 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA11 | alpha11.gpo.gov: 172.23.5.42, 172.23.5.43 | Direct physical COOP replacement |
+| SR-08 | IMGIPSDPSFSC2 | COOP | DCIAC02 (Data Center in a Crate) | ALPHA10 | ALPHA12 | alpha12.gpo.gov: 172.23.5.44, 172.23.5.45 | Direct physical COOP replacement |
+| SR-09 | IMGIPSDPSFSC3 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13A (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
+| SR-10 | IMGIPSDPSFSC4 | COOP | DCIAC03 (Data Center in a Crate) | ALPHA13 | N13B (node name to be confirmed) | alpha13.gpo.gov: 172.23.6.42–.45; node split to be confirmed | Direct physical COOP replacement |
 
 ## Existing Alpha estate (hardware inventory)
 
