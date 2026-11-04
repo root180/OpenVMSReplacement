@@ -19,7 +19,7 @@
 | RDP Access | Matthew Taylor |
 | Patching Group | COOP node 2: approved COOP patch group/window that does not overlap SR-09 or either PROD node. Select the exact catalog label in ServiceNow before submission. |
 | Affinity Rule | N/A / None — physical server |
-| Description | IMGIPSDPSFSC4 — GDPS COOP / DCIAC03 physical recovery cluster node 2 replacing ALPHA13 node B. |
+| Description | IMGIPSDPSFSC4 — GDPS COOP / DCIAC03 physical recovery cluster node 2 replacing ALPHA13 node B, paired with IMGIPSDPSFSC3 (SR-09). |
 | Watchlist | Muyiwa Aniyikaye |
 
 ## Special Requirements
