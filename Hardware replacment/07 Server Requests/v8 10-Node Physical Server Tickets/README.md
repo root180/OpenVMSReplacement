@@ -65,15 +65,19 @@ HQ and IM are used for the normal TEST/PROD/DR infrastructure according to the e
 
 Use the exact dropdown labels available in the live ServiceNow catalog. For COOP, select **COOP** for environment and **DCIAC (Data Center in a Crate)** for data center, matching the existing COOP request form.
 
+## ServiceNow field mapping
+
+Every ticket follows the live form order, includes a clear environment-specific Purpose, and states the paired hostname and peer ticket in Description. The 128 GB RAM quantity is stated in Purpose and Special Requirements because the memory dropdown has no quantity box.
+
 ## Changes in v8
 
 This folder supersedes **v7 10-Node Physical Server Tickets**. All ten tickets now use one consistent template:
 
-- **Patching:** every node has its own non-overlapping patch window; DR and COOP never share the PROD window. No ticket keeps the shared 4th-Friday window for both peers.
+- **Patching:** Mondays only, with separate non-overlapping windows for peer nodes; DR and COOP must not overlap PROD. Exact catalog group, week and time are confirmed with IT.
 - **Traceability:** N3A (172.16.35.15, .16) derived from the confirmed N3B split; N6A observed on .41 and .43; ALPHA13 node names and split marked for confirmation.
 - **Storage:** 14.4 TB baseline for TEST, PROD, DR and DCIAC02 (3PAR parity); **21.4 TB for DCIAC03** (Primera parity); DR and COOP replication from PROD stated.
 - **Cluster:** active/active, dual independent fabrics, File Share Witness on a third system.
-- **Memory:** 128 GB flagged for vendor requirements document and ISB approval.
+- **Memory:** 128 GB RAM minimum is explicitly stated in Purpose and Special Requirements. The dropdown selects the applicable catalog approval category.
 - **Native storage:** C:\ 200 GB + D:\ 300 GB, 500 GB usable, hardware RAID 1, justified one-to-one against ALPHA3.
 
 ## Storage request alignment
