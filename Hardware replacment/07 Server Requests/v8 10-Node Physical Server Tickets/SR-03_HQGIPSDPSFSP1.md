@@ -19,7 +19,7 @@
 | RDP Access | Matthew Taylor |
 | Patching Group | PROD node 1: approved production patch group/window that does not overlap SR-04, DR, or COOP. A shared daytime 4th-Friday 11 am–2 pm window is not accepted for both PROD nodes. Select the exact catalog label in ServiceNow before submission. |
 | Affinity Rule | N/A / None — physical server |
-| Description | HQGIPSDPSFSP1 — GDPS PROD physical file/service cluster node 1 replacing N3A. |
+| Description | HQGIPSDPSFSP1 — GDPS PROD physical file/service cluster node 1 replacing N3A, paired with HQGIPSDPSFSP2 (SR-04). |
 | Watchlist | Muyiwa Aniyikaye |
 
 ## Special Requirements
