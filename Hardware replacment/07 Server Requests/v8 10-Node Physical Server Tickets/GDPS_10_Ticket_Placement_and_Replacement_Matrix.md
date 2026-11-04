@@ -149,6 +149,7 @@ COOP remains the DCIAC / CRATE recovery environment and is not treated as an ord
 
 ## Patching rule
 
+- Patching occurs on Mondays only; IT confirms the exact catalog group, week and time.
 - The two nodes of each cluster are assigned different patching groups or windows and are never rebooted together.
 - COOP and DR are never patched in the same window as PROD.
 
