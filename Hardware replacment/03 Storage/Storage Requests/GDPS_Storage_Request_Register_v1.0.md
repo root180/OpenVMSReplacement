@@ -2,11 +2,11 @@
 
 | Request | Environment / site | Minimum usable capacity | Connected nodes | Existing parity |
 |---|---|---:|---|---|
-| ST-01 | TEST / HQ | >= 14.4 TB | HQVMGDPSFST1, HQVMGDPSFST2 | Production-equivalent |
-| ST-02 | PROD / HQ | >= 14.4 TB | HQVMGDPSFSP1, HQVMGDPSFSP2 | ALPHA3 / HPE 3PAR |
-| ST-03 | DR / IM | >= 14.4 TB | IMVMGDPSFSD1, IMVMGDPSFSD2 | ALPHA6 / HPE 3PAR |
-| ST-04 | COOP / DCIAC02 | >= 14.4 TB | IMVMGDPSFSC1, IMVMGDPSFSC2 | ALPHA10 / HPE 3PAR |
-| ST-05 | COOP / DCIAC03 | >= 21.4 TB | IMVMGDPSFSC3, IMVMGDPSFSC4 | ALPHA13 / HPE Primera |
+| ST-01 | TEST / HQ | >= 14.4 TB | HQGIPSDPSFST1, HQGIPSDPSFST2 | Production-equivalent |
+| ST-02 | PROD / HQ | >= 14.4 TB | HQGIPSDPSFSP1, HQGIPSDPSFSP2 | ALPHA3 / HPE 3PAR |
+| ST-03 | DR / IM | >= 14.4 TB | IMGIPSDPSFSD1, IMGIPSDPSFSD2 | ALPHA6 / HPE 3PAR |
+| ST-04 | COOP / DCIAC02 | >= 14.4 TB | IMGIPSDPSFSC1, IMGIPSDPSFSC2 | ALPHA10 / HPE 3PAR |
+| ST-05 | COOP / DCIAC03 | >= 21.4 TB | IMGIPSDPSFSC3, IMGIPSDPSFSC4 | ALPHA13 / HPE Primera |
 
 DEV does not require a new SAN acquisition request; it uses the existing GPO Enterprise NAS with a minimum 2 TB allocation.
 
