@@ -4,6 +4,25 @@
 **Audience:** Ravinder Birdi (Managing Director), Sam (CIO), Nadine (IT Operations Chief).  
 **Date:** November 6, 2026 | **Status:** Proposed; not yet approved.
 
+## Four-layer service relationship — executive overview
+
+This simple diagram shows **who serves whom**, from all GPO customers through the supporting technical organizations. It complements, rather than replaces, the responsibility and three-layer architectural diagrams above.
+
+```mermaid
+flowchart TB
+    CUST["LAYER 1 — CUSTOMERS<br/>All GPO Customers"]
+    BIZ["LAYER 2 — BUSINESS<br/>GIPS Business Unit Departments<br/>Own customer relationships, services, business rules and workflows"]
+    APPS["LAYER 3 — APPLICATION SUPPORT<br/>GIPS Application Support Department<br/>Owns GDPS application-platform operations and coordination"]
+    IT["LAYER 4 — INFRASTRUCTURE AND SECURITY<br/>GPO IT Infrastructure and IT Security<br/>Provision infrastructure and govern security controls"]
+    CUST <-->|"Customer services and requests"| BIZ
+    BIZ <-->|"Application services and support requests"| APPS
+    APPS <-->|"Infrastructure and security coordination"| IT
+```
+
+**Interpretation:** All GPO customers continue to work with GIPS business unit departments, including their existing customer-facing contacts. Those departments interface with GIPS Application Support for GDPS platform services. GIPS Application Support coordinates with GPO IT Infrastructure and IT Security for physical infrastructure and security support. The diagram represents service relationships, **not** a transfer of business-customer relationships to Application Support or a transfer of IT Security's independent policy authority.
+
+**Platform patching clarification:** Where GPO IT Security delegates operating-system or application-platform patch execution to the designated platform owner, GIPS Application Support coordinates and performs that assigned responsibility within approved security policy and change-control procedures. GPO IT Security retains policy, oversight and enforcement; responsibility for particular patches remains subject to documented assignment and technical access.
+
 ## Decision statement
 Upon approval, **GIPS Application Support shall be the single accountable operational owner and coordination point for Alpha application-platform activities**, including service requests, server and storage acquisition requests, application configuration, COOP/DR coordination, access-impact reviews, change visibility, incident ownership, and modernization alignment.
 
@@ -74,25 +93,6 @@ flowchart TB
 **Customer-facing boundary:** External customers continue to interface with their established business divisions and contacts, including Eunice and Preston. The business divisions remain accountable for customer service, business requirements and business workflows. **GIPS Application Support interfaces with those divisions for platform operations; it does not replace their customer relationships.** The business divisions do not independently administer or procure hardware, storage, server configuration or platform security changes.
 
 **Technical ownership boundary:** GIPS Application Support is the operational platform owner and coordinates Alpha/GDPS technical requests. GPO IT Infrastructure performs authorized physical and infrastructure work; GPO IT Security retains security decisions and implementation authority. Planned access, drive or security-boundary changes are coordinated with Application Support, without delaying emergency security actions.
-
-## Four-layer service relationship — executive overview
-
-This simple diagram shows **who serves whom**, from all GPO customers through the supporting technical organizations. It complements, rather than replaces, the responsibility and three-layer architectural diagrams above.
-
-```mermaid
-flowchart TB
-    CUST["LAYER 1 — CUSTOMERS<br/>All GPO Customers"]
-    BIZ["LAYER 2 — BUSINESS<br/>GIPS Business Unit Departments<br/>Own customer relationships, services, business rules and workflows"]
-    APPS["LAYER 3 — APPLICATION SUPPORT<br/>GIPS Application Support Department<br/>Owns GDPS application-platform operations and coordination"]
-    IT["LAYER 4 — INFRASTRUCTURE AND SECURITY<br/>GPO IT Infrastructure and IT Security<br/>Provision infrastructure and govern security controls"]
-    CUST <-->|"Customer services and requests"| BIZ
-    BIZ <-->|"Application services and support requests"| APPS
-    APPS <-->|"Infrastructure and security coordination"| IT
-```
-
-**Interpretation:** All GPO customers continue to work with GIPS business unit departments, including their existing customer-facing contacts. Those departments interface with GIPS Application Support for GDPS platform services. GIPS Application Support coordinates with GPO IT Infrastructure and IT Security for physical infrastructure and security support. The diagram represents service relationships, **not** a transfer of business-customer relationships to Application Support or a transfer of IT Security's independent policy authority.
-
-**Platform patching clarification:** Where GPO IT Security delegates operating-system or application-platform patch execution to the designated platform owner, GIPS Application Support coordinates and performs that assigned responsibility within approved security policy and change-control procedures. GPO IT Security retains policy, oversight and enforcement; responsibility for particular patches remains subject to documented assignment and technical access.
 
 **Core rule:** GIPS Application Support is accountable for coordination and application-service outcomes; supporting technical organizations execute their own authorized functions. No technical approval, emergency security authority, or segregation-of-duties control is bypassed.
 
