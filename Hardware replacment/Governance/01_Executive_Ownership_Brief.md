@@ -38,35 +38,42 @@ flowchart TD
 
 ## Three-layer service ownership diagram — GDPS
 
-The replacement application is named **GIPS Document Processing Service (GDPS)**, also known as the **Alpha Replacement System** (formerly called **Alpha**). **GDPS** is the forward-looking name; `Alpha` is used only when identifying the legacy OpenVMS environment or an established historical interface.
+The replacement application is named **GIPS Document Processing Service (GDPS)**, also known as the **Alpha Replacement System** (formerly **Alpha**). Use **GDPS** as the forward-looking system name; **Alpha/OpenVMS** identifies the legacy system and historical dependencies.
+
+The application layer deliberately distinguishes **external customers** from the **business divisions** that serve them. Eunice and Preston are shown as existing customer-facing business contacts, not as platform administrators. Their precise titles and organizational assignments are to be confirmed.
 
 ```mermaid
 flowchart TB
-    subgraph L1["LAYER 1 — APPLICATION / BUSINESS ACCESS"]
+    subgraph L1["LAYER 1 — APPLICATION AND BUSINESS SERVICE"]
        direction TB
-       BU["Business units and authorized users<br/>Access GDPS; own business requirements,<br/>rules, workflows and acceptance"]
+       EXT["External customers<br/>Continue working with their business-division contacts"]
+       BIZ["Business divisions / customer-facing contacts<br/>Including Eunice and Preston<br/>Own customer relationships, business rules and workflows"]
        APP["GIPS Document Processing Service (GDPS)<br/>AKA Alpha Replacement System<br/>(formerly Alpha)"]
-       BU -->|"Application access / business operations"| APP
+       EXT <-->|"Business requests, service and responses"| BIZ
+       BIZ <-->|"Use application; validate business outputs"| APP
     end
     subgraph L2["LAYER 2 — APPLICATION PLATFORM"]
        direction TB
+       GIPS["GIPS Application Support Department<br/>Single platform operational owner<br/>Coordinates platform requests, configuration,<br/>incidents and change visibility"]
        PLATFORM["Windows Server application platform<br/>(replacement for current OpenVMS environment)<br/>GDPS hosting and application runtime"]
-       GIPS["GIPS Application Support Department<br/>Platform operational owner<br/>Application configuration, service incidents,<br/>change coordination and platform oversight"]
        GIPS -->|"Manages and coordinates"| PLATFORM
     end
     subgraph L3["LAYER 3 — UNDERLYING INFRASTRUCTURE"]
        direction TB
-       INFRA["Physical and virtual compute, storage/disks,<br/>clusters, network, operating-system infrastructure,<br/>data center and COOP/DR infrastructure"]
-       IT["GPO IT Infrastructure / IT Operations<br/>Installs, provisions and maintains infrastructure"]
-       SECURITY["GPO IT Security<br/>Security policy, identity/boundary controls,<br/>security approval and implementation"]
-       IT -->|"Implements and maintains"| INFRA
-       SECURITY -->|"Secures and governs"| INFRA
+       IT["GPO IT Infrastructure / IT Operations<br/>Physical installation and technical provisioning"]
+       SEC["GPO IT Security<br/>Policy, identity, security boundaries and enforcement"]
+       INFRA["Compute, disks and storage, clusters, network,<br/>OS infrastructure, data centers and COOP/DR"]
+       IT -->|"Installs and maintains"| INFRA
+       SEC -->|"Secures and governs"| INFRA
     end
     APP -->|"Runs on"| PLATFORM
-    PLATFORM -->|"Hosted by / depends on"| INFRA
+    BIZ <-->|"Platform support requests / service status"| GIPS
+    PLATFORM -->|"Hosted by"| INFRA
 ```
 
-**Ownership distinction:** Business units use the GDPS application and determine its business requirements; GIPS Application Support manages the application platform and is the single operational coordination point; GPO IT Infrastructure provides and maintains the underlying infrastructure, while GPO IT Security governs and implements applicable security controls. Planned changes affecting GDPS access, drives, service accounts or security boundaries must be coordinated with GIPS Application Support; emergency security action remains within IT Security authority with prompt notice.
+**Customer-facing boundary:** External customers continue to interface with their established business divisions and contacts, including Eunice and Preston. The business divisions remain accountable for customer service, business requirements and business workflows. **GIPS Application Support interfaces with those divisions for platform operations; it does not replace their customer relationships.** The business divisions do not independently administer or procure hardware, storage, server configuration or platform security changes.
+
+**Technical ownership boundary:** GIPS Application Support is the operational platform owner and coordinates Alpha/GDPS technical requests. GPO IT Infrastructure performs authorized physical and infrastructure work; GPO IT Security retains security decisions and implementation authority. Planned access, drive or security-boundary changes are coordinated with Application Support, without delaying emergency security actions.
 
 **Core rule:** GIPS Application Support is accountable for coordination and application-service outcomes; supporting technical organizations execute their own authorized functions. No technical approval, emergency security authority, or segregation-of-duties control is bypassed.
 
